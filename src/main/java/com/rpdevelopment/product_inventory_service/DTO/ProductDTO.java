@@ -1,11 +1,13 @@
 package com.rpdevelopment.product_inventory_service.DTO;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.rpdevelopment.product_inventory_service.entities.Category;
 import com.rpdevelopment.product_inventory_service.entities.Product;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@JsonPropertyOrder({ "id", "name", "description", "sku", "price", "active", "categories" })
 public class ProductDTO {
 
     //========== ATRIBUTOS ==============

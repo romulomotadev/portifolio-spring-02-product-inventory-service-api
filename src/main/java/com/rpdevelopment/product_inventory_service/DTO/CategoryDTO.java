@@ -1,7 +1,9 @@
 package com.rpdevelopment.product_inventory_service.DTO;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.rpdevelopment.product_inventory_service.entities.Category;
 
+@JsonPropertyOrder({ "id", "name" })
 public class CategoryDTO {
 
     //========== ATRIBUTOS ==============
