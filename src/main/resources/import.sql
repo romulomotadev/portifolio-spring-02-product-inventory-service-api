@@ -24,8 +24,8 @@ INSERT INTO tb_product(name, description, sku, price, active) VALUES ('Adaptador
 INSERT INTO tb_product(name, description, sku, price, active) VALUES ('Cabo de Rede Cat6 5m', 'Cabo Ethernet Cat6 de 5 metros para redes gigabit', 'A005-P012', 25, true);
 INSERT INTO tb_product(name, description, sku, price, active) VALUES ('Roteador WiFi Gigabit', 'Roteador dual band com suporte a velocidades gigabit e múltiplos dispositivos', 'A006-P013', 349, true);
 INSERT INTO tb_product(name, description, sku, price, active) VALUES ('Switch 8 Portas Gigabit', 'Switch de rede com 8 portas gigabit para expansão de rede local', 'A006-P014', 199, true);
-INSERT INTO tb_product(name, description, sku, price, active) VALUES ('Kit Chave de Precisão', 'Kit de ferramentas com múltiplas pontas para manutenção de eletrônicos', 'A007-P015', 59, true);
-INSERT INTO tb_product(name, description, sku, price, active) VALUES ('Multímetro Digital', 'Multímetro digital para medição de tensão, corrente e resistência', 'A007-P016', 119, true);
+INSERT INTO tb_product(name, description, sku, price, active) VALUES ('Kit Chave de Precisão', 'Kit de ferramentas com múltiplas pontas para manutenção de eletrônicos', 'A007-P015', 59, false);
+INSERT INTO tb_product(name, description, sku, price, active) VALUES ('Multímetro Digital', 'Multímetro digital para medição de tensão, corrente e resistência', 'A007-P016', 119, false);
 
 
 ---------------- PRODUCT CATEGORY ----------------
@@ -74,5 +74,5 @@ INSERT INTO tb_stock(quantity, minimium_stock, product_id) VALUES (45, 10, 12);
 INSERT INTO tb_stock(quantity, minimium_stock, product_id) VALUES (14, 3, 13);
 INSERT INTO tb_stock(quantity, minimium_stock, product_id) VALUES (16, 4, 14);
 
-INSERT INTO tb_stock(quantity, minimium_stock, product_id) VALUES (28, 5, 15);
-INSERT INTO tb_stock(quantity, minimium_stock, product_id) VALUES (19, 4, 16);
+INSERT INTO tb_stock(quantity, minimium_stock, product_id) VALUES (0, 5, 15);
+INSERT INTO tb_stock(quantity, minimium_stock, product_id) VALUES (0, 4, 16);

@@ -48,4 +48,11 @@ public class ProductService {
         Product product = productRepository.findBySku(sku);
         return new ProductDTO(product);
     }
+
+    //FIND ALL PRODUCT ACTIVE
+    @Transactional(readOnly = true)
+    public Page<ProductDTO> findAllProductActive(Pageable pageable, boolean active) {
+        Page<Product> productsAtive = productRepository.findAllByActive(pageable, active);
+        return productsAtive.map(ProductDTO::new);
+    }
 }

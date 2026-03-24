@@ -43,4 +43,13 @@ public class ProductController {
         return ResponseEntity.ok(productSku);
     }
 
+    //FIND ALL PRODUCT ACTIVE
+    @GetMapping(value = "/active")
+    public ResponseEntity<Page<ProductDTO>> findAllByActive(
+            @RequestParam(name = "active", defaultValue = "true")
+            boolean active, Pageable pageable) {
+        Page<ProductDTO> productActive = productService.findAllProductActive(pageable, active);
+        return ResponseEntity.ok(productActive);
+    }
+
 }
