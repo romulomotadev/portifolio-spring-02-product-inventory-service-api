@@ -3,6 +3,7 @@ package com.rpdevelopment.product_inventory_service.service;
 import com.rpdevelopment.product_inventory_service.DTO.ProductDTO;
 import com.rpdevelopment.product_inventory_service.entities.Product;
 import com.rpdevelopment.product_inventory_service.exceptions.ResourceNotFoundException;
+import com.rpdevelopment.product_inventory_service.projection.ProductCategoryProjection;
 import com.rpdevelopment.product_inventory_service.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister;
@@ -54,5 +55,11 @@ public class ProductService {
     public Page<ProductDTO> findAllProductActive(Pageable pageable, boolean active) {
         Page<Product> productsAtive = productRepository.findAllByActive(pageable, active);
         return productsAtive.map(ProductDTO::new);
+    }
+
+    //FIND ALL PRODUCT BY CATEGORY
+    @Transactional(readOnly = true)
+    public Page<ProductCategoryProjection> findAllProductByCategory(String categoryName, Pageable pageable) {
+        return productRepository.findAllProductByCategory(categoryName, pageable);
     }
 }

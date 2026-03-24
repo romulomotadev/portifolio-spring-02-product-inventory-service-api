@@ -3,6 +3,7 @@ package com.rpdevelopment.product_inventory_service.DTO;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.rpdevelopment.product_inventory_service.entities.Category;
 import com.rpdevelopment.product_inventory_service.entities.Product;
+import com.rpdevelopment.product_inventory_service.projection.ProductCategoryProjection;
 
 import java.util.HashSet;
 import java.util.Set;

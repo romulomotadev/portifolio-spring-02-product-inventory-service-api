@@ -1,6 +1,7 @@
 package com.rpdevelopment.product_inventory_service.controller;
 
 import com.rpdevelopment.product_inventory_service.DTO.ProductDTO;
+import com.rpdevelopment.product_inventory_service.projection.ProductCategoryProjection;
 import com.rpdevelopment.product_inventory_service.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -52,4 +53,11 @@ public class ProductController {
         return ResponseEntity.ok(productActive);
     }
 
+    @GetMapping(value = "/category")
+    public ResponseEntity<Page<ProductCategoryProjection>> findAllByCategory(
+            @RequestParam(name = "category", defaultValue = "")
+            String category, Pageable pageable){
+        Page<ProductCategoryProjection> productByCategory = productService.findAllProductByCategory(category, pageable);
+        return ResponseEntity.ok(productByCategory);
+    }
 }
