@@ -10,7 +10,6 @@ INSERT INTO tb_category(name) VALUES ('Ferramentas');
 
 ---------------- PRODUTOS ----------------
 
-INSERT INTO tb_product(name, description, sku, price, active) VALUES ('Processador i5-12400f', 'Processador de 12ª geração popular, com 6 núcleos e 12 threads (2.5GHz, até 4.4GHz Turbo), ideal para jogos e custo-benefício', 'A001-P001', 699, true);
 INSERT INTO tb_product(name, description, sku, price, active) VALUES ('Processador i5-12400f', 'Processador de 12ª geração popular, com 6 núcleos e 12 threads (2.5GHz até 4.4GHz Turbo), ideal para jogos e custo-benefício', 'A001-P001', 699, true);
 INSERT INTO tb_product(name, description, sku, price, active) VALUES ('Processador Ryzen 5 5600', 'Processador AMD com 6 núcleos e 12 threads, arquitetura Zen 3, excelente desempenho para jogos e aplicações', 'A001-P002', 749, true);
 INSERT INTO tb_product(name, description, sku, price, active) VALUES ('Memória RAM 16GB DDR4 3200MHz', 'Memória RAM DDR4 com frequência de 3200MHz, ideal para upgrades e sistemas de alto desempenho', 'A002-P003', 289, true);

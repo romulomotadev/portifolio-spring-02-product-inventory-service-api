@@ -41,4 +41,11 @@ public class ProductService {
         return new ProductDTO(product);
     }
 
+
+    //FIND BY SKU
+    @Transactional(readOnly = true)
+    public ProductDTO findAllBySku(String sku) {
+        Product product = productRepository.findBySku(sku);
+        return new ProductDTO(product);
+    }
 }
