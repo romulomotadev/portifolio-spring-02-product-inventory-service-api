@@ -7,8 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/products")
@@ -36,7 +37,7 @@ public class ProductController {
         return ResponseEntity.ok(productId);
     }
 
-    //FIND BY SKY
+    //FIND BY SKU
     @GetMapping(value = "/sku")
     public ResponseEntity<ProductDTO> findBySku(
             @RequestParam(name = "sku") String sku ) {
@@ -53,11 +54,21 @@ public class ProductController {
         return ResponseEntity.ok(productActive);
     }
 
+    //FIND ALL PRODUCTS BY CATEGORY
     @GetMapping(value = "/category")
     public ResponseEntity<Page<ProductCategoryProjection>> findAllByCategory(
             @RequestParam(name = "category", defaultValue = "")
             String category, Pageable pageable){
         Page<ProductCategoryProjection> productByCategory = productService.findAllProductByCategory(category, pageable);
         return ResponseEntity.ok(productByCategory);
+    }
+
+    //FIND ALL PRODUCTS BY NAME (SEARCH)
+    @GetMapping(value = "/name")
+    public ResponseEntity<Page<ProductDTO>> seachByName(
+            @RequestParam(name = "name", defaultValue = "")
+            String name, Pageable pageable) {
+        Page<ProductDTO> searchByName = productService.searchByName(name, pageable);
+        return ResponseEntity.ok(searchByName);
     }
 }

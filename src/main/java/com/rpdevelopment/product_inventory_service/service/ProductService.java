@@ -12,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -61,5 +62,12 @@ public class ProductService {
     @Transactional(readOnly = true)
     public Page<ProductCategoryProjection> findAllProductByCategory(String categoryName, Pageable pageable) {
         return productRepository.findAllProductByCategory(categoryName, pageable);
+    }
+
+    //FIND ALL PRODUCTS BY NAME (SEARCH)
+    @Transactional(readOnly = true)
+    public Page<ProductDTO> searchByName(String productName, Pageable pageable) {
+        Page<Product> searchByName = productRepository.findByNameContainingIgnoreCaseOrderByNameAsc(productName, pageable);
+        return searchByName.map(ProductDTO::new);
     }
 }
