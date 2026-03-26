@@ -31,8 +31,9 @@ public class Product {
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> categories = new HashSet<>();
 
-    //STOCK
-    @OneToOne(cascade = CascadeType.ALL)
+    //===== ATRIBUTOS RELACIONADOS =======
+
+    @OneToOne(mappedBy = "product", cascade = CascadeType.ALL)
     private Stock stock;
 
 

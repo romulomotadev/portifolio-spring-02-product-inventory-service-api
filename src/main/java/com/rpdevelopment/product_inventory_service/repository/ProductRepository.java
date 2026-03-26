@@ -13,18 +13,22 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-    //============= FIND BY SKU ================
+    //============= PRODUCT ================
 
+    // FIND BY SKU
     Product findBySku(String sku);
 
-
-    //========= FIND ALL PRODUCT ACTIVE =========
+    // FIND ALL PRODUCT ACTIVE
 
     Page<Product> findAllByActive(Pageable pageable, boolean active);
 
+    // FIND BY PRODUCT BY NAME
+    Page<Product> findByNameContainingIgnoreCaseOrderByNameAsc(String productName, Pageable pageable);
 
-    //====== FIND ALL PRODUCTS BY CATEGORY ========
 
+    //========== PRODUCT -> CATEGORY ============
+
+    // FIND ALL PRODUCTS BY CATEGORY
     @Query(nativeQuery = true, value = """
         SELECT TB_PRODUCT.NAME AS name, 
                TB_PRODUCT.DESCRIPTION AS description, 
@@ -45,9 +49,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     Page<ProductCategoryProjection> findAllProductByCategory(String categoryName, Pageable pageable);
 
 
-    //====== FIND BY PRODUCT BY NAME ========
+    //========== PRODUCT -> STOCK ============
 
-    Page<Product> findByNameContainingIgnoreCaseOrderByNameAsc(String productName, Pageable pageable);
 }
 
 

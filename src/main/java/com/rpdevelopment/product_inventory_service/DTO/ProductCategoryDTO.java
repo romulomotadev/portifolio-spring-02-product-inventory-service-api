@@ -3,13 +3,12 @@ package com.rpdevelopment.product_inventory_service.DTO;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.rpdevelopment.product_inventory_service.entities.Category;
 import com.rpdevelopment.product_inventory_service.entities.Product;
-import com.rpdevelopment.product_inventory_service.projection.ProductCategoryProjection;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @JsonPropertyOrder({ "id", "name", "description", "sku", "price", "active", "categories" })
-public class ProductDTO {
+public class ProductCategoryDTO {
 
     //========== ATRIBUTOS ==============
 
@@ -28,10 +27,10 @@ public class ProductDTO {
 
     //========== CONTRUTORES ==============
 
-    public ProductDTO() {
+    public ProductCategoryDTO() {
     }
 
-    public ProductDTO(Long id, String name, String description, String sku, Double price, boolean active, Set<CategoryDTO> categories) {
+    public ProductCategoryDTO(Long id, String name, String description, String sku, Double price, boolean active, Set<CategoryDTO> categories) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -41,7 +40,7 @@ public class ProductDTO {
         this.categories = categories;
     }
 
-    public ProductDTO(Product entity) {
+    public ProductCategoryDTO(Product entity) {
         this.id = entity.getId();
         this.name = entity.getName();
         this.description = entity.getDescription();

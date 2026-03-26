@@ -1,56 +1,54 @@
 package com.rpdevelopment.product_inventory_service.controller;
 
-import com.rpdevelopment.product_inventory_service.DTO.ProductDTO;
+import com.rpdevelopment.product_inventory_service.DTO.ProductCategoryDTO;
 import com.rpdevelopment.product_inventory_service.projection.ProductCategoryProjection;
-import com.rpdevelopment.product_inventory_service.service.ProductService;
+import com.rpdevelopment.product_inventory_service.service.ProductCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping(value = "/products")
-public class ProductController {
+public class ProductCategoryController {
 
     //========= DEPENDENCIAS ==============
 
     @Autowired
-    private ProductService productService;
+    private ProductCategoryService productService;
 
 
     //========= GET ==============
 
     //FIND ALL
     @GetMapping
-    public ResponseEntity<Page<ProductDTO>> findall(Pageable pageable) {
-        Page<ProductDTO> products = productService.findAllProducts(pageable);
+    public ResponseEntity<Page<ProductCategoryDTO>> findall(Pageable pageable) {
+        Page<ProductCategoryDTO> products = productService.findAllProducts(pageable);
         return ResponseEntity.ok(products);
     }
 
     //FIND BY ID
     @GetMapping(value = "/{id}")
-    public ResponseEntity<ProductDTO> findById(@PathVariable Long id) {
-        ProductDTO productId = productService.findById(id);
+    public ResponseEntity<ProductCategoryDTO> findById(@PathVariable Long id) {
+        ProductCategoryDTO productId = productService.findById(id);
         return ResponseEntity.ok(productId);
     }
 
     //FIND BY SKU
     @GetMapping(value = "/sku")
-    public ResponseEntity<ProductDTO> findBySku(
+    public ResponseEntity<ProductCategoryDTO> findBySku(
             @RequestParam(name = "sku") String sku ) {
-        ProductDTO productSku = productService.findAllBySku(sku);
+        ProductCategoryDTO productSku = productService.findAllBySku(sku);
         return ResponseEntity.ok(productSku);
     }
 
     //FIND ALL PRODUCT ACTIVE
     @GetMapping(value = "/active")
-    public ResponseEntity<Page<ProductDTO>> findAllByActive(
+    public ResponseEntity<Page<ProductCategoryDTO>> findAllByActive(
             @RequestParam(name = "active", defaultValue = "true")
             boolean active, Pageable pageable) {
-        Page<ProductDTO> productActive = productService.findAllProductActive(pageable, active);
+        Page<ProductCategoryDTO> productActive = productService.findAllProductActive(pageable, active);
         return ResponseEntity.ok(productActive);
     }
 
@@ -65,10 +63,10 @@ public class ProductController {
 
     //FIND ALL PRODUCTS BY NAME (SEARCH)
     @GetMapping(value = "/name")
-    public ResponseEntity<Page<ProductDTO>> seachByName(
+    public ResponseEntity<Page<ProductCategoryDTO>> seachByName(
             @RequestParam(name = "name", defaultValue = "")
             String name, Pageable pageable) {
-        Page<ProductDTO> searchByName = productService.searchByName(name, pageable);
+        Page<ProductCategoryDTO> searchByName = productService.searchByName(name, pageable);
         return ResponseEntity.ok(searchByName);
     }
 }
