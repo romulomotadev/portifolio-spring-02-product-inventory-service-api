@@ -28,7 +28,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     //========== PRODUCT -> CATEGORY ============
 
-    // FIND ALL PRODUCTS BY CATEGORY
+    // SEARCH PRODUCTS BY CATEGORY
     @Query(nativeQuery = true, value = """
         SELECT TB_PRODUCT.NAME AS name, 
                TB_PRODUCT.DESCRIPTION AS description, 
@@ -51,6 +51,20 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     //========== PRODUCT -> STOCK ============
 
+    //FIND ALL PRODUCT BY STOCK LOW
+    @Query(nativeQuery = true, value = """
+        SELECT TB_PRODUCT.*
+        FROM TB_PRODUCT
+        INNER JOIN TB_STOCK ON TB_STOCK.PRODUCT_ID = TB_PRODUCT.ID
+        WHERE TB_STOCK.QUANTITY <= TB_STOCK.MINIMUM_STOCK
+        ORDER BY TB_PRODUCT.NAME ASC
+    """, countQuery = """
+        SELECT COUNT(*)
+        FROM TB_PRODUCT
+        INNER JOIN TB_STOCK ON TB_STOCK.PRODUCT_ID = TB_PRODUCT.ID
+        WHERE TB_STOCK.QUANTITY <= TB_STOCK.MINIMUM_STOCK
+    """)
+    Page<Product> findAllByMinimumStock(Pageable pageable);
 }
 
 

@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,4 +29,19 @@ public class ProductStockController {
         Page<ProductStockDTO> productStockDTOs = productStockService.findAll(pageable);
         return ResponseEntity.ok(productStockDTOs);
     }
+
+    //FIND ID
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<ProductStockDTO> findById(@PathVariable Long id) {
+        ProductStockDTO productStockDTO = productStockService.findById(id);
+        return ResponseEntity.ok(productStockDTO);
+    }
+
+    //FIND ALL PRODUCT BY STOCK LOW
+    @GetMapping(value = "/low")
+    public ResponseEntity<Page<ProductStockDTO>> findAllStockLow(Pageable pageable) {
+        Page<ProductStockDTO> productStockDTOs = productStockService.findAllStockLow(pageable);
+        return ResponseEntity.ok(productStockDTOs);
+    }
+
 }

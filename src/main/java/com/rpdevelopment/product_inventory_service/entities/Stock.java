@@ -12,7 +12,7 @@ public class Stock {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Integer quantity;
-    private Integer minimium_stock;
+    private Integer minimum_stock;
 
 
     //===== ATRIBUTOS RELACIONADOS =======
@@ -30,7 +30,7 @@ public class Stock {
     public Stock(Long id, Integer quantity, Integer minimium_stock) {
         this.id = id;
         this.quantity = quantity;
-        this.minimium_stock = minimium_stock;
+        this.minimum_stock = minimium_stock;
     }
 
 
@@ -53,10 +53,10 @@ public class Stock {
     }
 
     public Integer getMinimium_stock() {
-        return minimium_stock;
+        return minimum_stock;
     }
 
     public void setMinimium_stock(Integer minimium_stock) {
-        this.minimium_stock = minimium_stock;
+        this.minimum_stock = minimium_stock;
     }
 }

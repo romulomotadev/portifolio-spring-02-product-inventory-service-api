@@ -2,8 +2,8 @@ package com.rpdevelopment.product_inventory_service.service;
 
 import com.rpdevelopment.product_inventory_service.DTO.ProductStockDTO;
 import com.rpdevelopment.product_inventory_service.entities.Product;
+import com.rpdevelopment.product_inventory_service.exceptions.ResourceNotFoundException;
 import com.rpdevelopment.product_inventory_service.repository.ProductRepository;
-import com.rpdevelopment.product_inventory_service.repository.StockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,9 +16,7 @@ public class ProductStockService {
     //======= DEPENDENCIAS ===========
 
     @Autowired
-    public ProductRepository productRepository;
-    @Autowired
-    public StockRepository stockRepository;
+    public ProductRepository repository;
 
 
     //======= GET ===========
@@ -26,7 +24,23 @@ public class ProductStockService {
     //FIND ALL
     @Transactional(readOnly = true)
     public Page<ProductStockDTO> findAll(Pageable pageable) {
-        Page<Product> product = productRepository.findAll(pageable);
+        Page<Product> product = repository.findAll(pageable);
         return product.map(ProductStockDTO::new);
     }
+
+    //FIND ID
+    @Transactional(readOnly = true)
+    public ProductStockDTO findById(Long id) {
+        Product product = repository.findById(id).orElseThrow(
+                () -> new ResourceNotFoundException("Resource not found"));
+        return new ProductStockDTO(product);
+    }
+
+    //FIND ALL PRODUCT BY STOCK LOW
+    @Transactional(readOnly = true)
+    public Page<ProductStockDTO> findAllStockLow(Pageable pageable) {
+        Page<Product> products = repository.findAllByMinimumStock(pageable);
+        return products.map(ProductStockDTO::new);
+    }
+
 }

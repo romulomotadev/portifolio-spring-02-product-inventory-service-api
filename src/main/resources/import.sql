@@ -55,24 +55,24 @@ INSERT INTO tb_product_category(product_id, category_id) VALUES (16, 6);
 
 ---------------- STOCK ----------------
 
-INSERT INTO tb_stock(quantity, minimium_stock, product_id) VALUES (25, 5, 1);
-INSERT INTO tb_stock(quantity, minimium_stock, product_id) VALUES (18, 5, 2);
-INSERT INTO tb_stock(quantity, minimium_stock, product_id) VALUES (40, 10, 3);
-INSERT INTO tb_stock(quantity, minimium_stock, product_id) VALUES (22, 5, 4);
+INSERT INTO tb_stock(quantity, minimum_stock, product_id) VALUES (25, 5, 1);
+INSERT INTO tb_stock(quantity, minimum_stock, product_id) VALUES (18, 5, 2);
+INSERT INTO tb_stock(quantity, minimum_stock, product_id) VALUES (40, 10, 3);
+INSERT INTO tb_stock(quantity, minimum_stock, product_id) VALUES (22, 5, 4);
 
-INSERT INTO tb_stock(quantity, minimium_stock, product_id) VALUES (12, 2, 5);
-INSERT INTO tb_stock(quantity, minimium_stock, product_id) VALUES (10, 2, 6);
+INSERT INTO tb_stock(quantity, minimum_stock, product_id) VALUES (12, 2, 5);
+INSERT INTO tb_stock(quantity, minimum_stock, product_id) VALUES (10, 2, 6);
 
-INSERT INTO tb_stock(quantity, minimium_stock, product_id) VALUES (35, 8, 7);
-INSERT INTO tb_stock(quantity, minimium_stock, product_id) VALUES (20, 5, 8);
-INSERT INTO tb_stock(quantity, minimium_stock, product_id) VALUES (15, 3, 9);
+INSERT INTO tb_stock(quantity, minimum_stock, product_id) VALUES (35, 8, 7);
+INSERT INTO tb_stock(quantity, minimum_stock, product_id) VALUES (20, 5, 8);
+INSERT INTO tb_stock(quantity, minimum_stock, product_id) VALUES (15, 3, 9);
 
-INSERT INTO tb_stock(quantity, minimium_stock, product_id) VALUES (50, 10, 10);
-INSERT INTO tb_stock(quantity, minimium_stock, product_id) VALUES (30, 5, 11);
-INSERT INTO tb_stock(quantity, minimium_stock, product_id) VALUES (45, 10, 12);
+INSERT INTO tb_stock(quantity, minimum_stock, product_id) VALUES (50, 10, 10);
+INSERT INTO tb_stock(quantity, minimum_stock, product_id) VALUES (30, 5, 11);
+INSERT INTO tb_stock(quantity, minimum_stock, product_id) VALUES (45, 10, 12);
 
-INSERT INTO tb_stock(quantity, minimium_stock, product_id) VALUES (14, 3, 13);
-INSERT INTO tb_stock(quantity, minimium_stock, product_id) VALUES (16, 4, 14);
+INSERT INTO tb_stock(quantity, minimum_stock, product_id) VALUES (14, 3, 13);
+INSERT INTO tb_stock(quantity, minimum_stock, product_id) VALUES (16, 4, 14);
 
-INSERT INTO tb_stock(quantity, minimium_stock, product_id) VALUES (0, 5, 15);
-INSERT INTO tb_stock(quantity, minimium_stock, product_id) VALUES (0, 4, 16);
+INSERT INTO tb_stock(quantity, minimum_stock, product_id) VALUES (0, 5, 15);
+INSERT INTO tb_stock(quantity, minimum_stock, product_id) VALUES (0, 4, 16);

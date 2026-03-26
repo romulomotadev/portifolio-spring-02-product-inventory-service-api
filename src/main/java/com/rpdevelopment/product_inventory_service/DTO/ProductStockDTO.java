@@ -1,8 +1,10 @@
 package com.rpdevelopment.product_inventory_service.DTO;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.rpdevelopment.product_inventory_service.entities.Product;
 import com.rpdevelopment.product_inventory_service.entities.Stock;
 
+@JsonPropertyOrder({ "id", "name", "description", "sku", "price", "active", "stock" })
 public class ProductStockDTO {
 
     //========== ATRIBUTOS ==============
