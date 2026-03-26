@@ -57,14 +57,33 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
         FROM TB_PRODUCT
         INNER JOIN TB_STOCK ON TB_STOCK.PRODUCT_ID = TB_PRODUCT.ID
         WHERE TB_STOCK.QUANTITY <= TB_STOCK.MINIMUM_STOCK
+        AND TB_STOCK.QUANTITY > 0
         ORDER BY TB_PRODUCT.NAME ASC
     """, countQuery = """
         SELECT COUNT(*)
         FROM TB_PRODUCT
         INNER JOIN TB_STOCK ON TB_STOCK.PRODUCT_ID = TB_PRODUCT.ID
         WHERE TB_STOCK.QUANTITY <= TB_STOCK.MINIMUM_STOCK
+        AND TB_STOCK.QUANTITY > 0
     """)
     Page<Product> findAllByMinimumStock(Pageable pageable);
+
+    //FIND ALL PRODUCTS OUT OF STOCK
+    @Query(nativeQuery = true, value = """
+        SELECT TB_PRODUCT.*
+        FROM TB_PRODUCT
+        INNER JOIN TB_STOCK ON TB_STOCK.PRODUCT_ID = TB_PRODUCT.ID
+        WHERE  TB_STOCK.QUANTITY = 0
+        ORDER BY TB_PRODUCT.NAME ASC
+    """, countQuery = """
+        SELECT TB_PRODUCT.*
+        FROM TB_PRODUCT
+        INNER JOIN TB_STOCK ON TB_STOCK.PRODUCT_ID = TB_PRODUCT.ID
+        WHERE  TB_STOCK.QUANTITY = 0
+        ORDER BY TB_PRODUCT.NAME ASC
+    """)
+    Page<Product> findAllProductsOutOfStock(Pageable pageable);
+
 }
 
 

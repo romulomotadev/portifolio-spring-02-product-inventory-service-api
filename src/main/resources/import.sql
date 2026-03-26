@@ -71,8 +71,8 @@ INSERT INTO tb_stock(quantity, minimum_stock, product_id) VALUES (50, 10, 10);
 INSERT INTO tb_stock(quantity, minimum_stock, product_id) VALUES (30, 5, 11);
 INSERT INTO tb_stock(quantity, minimum_stock, product_id) VALUES (45, 10, 12);
 
-INSERT INTO tb_stock(quantity, minimum_stock, product_id) VALUES (14, 3, 13);
-INSERT INTO tb_stock(quantity, minimum_stock, product_id) VALUES (16, 4, 14);
+INSERT INTO tb_stock(quantity, minimum_stock, product_id) VALUES (1, 3, 13);
+INSERT INTO tb_stock(quantity, minimum_stock, product_id) VALUES (2, 4, 14);
 
 INSERT INTO tb_stock(quantity, minimum_stock, product_id) VALUES (0, 5, 15);
 INSERT INTO tb_stock(quantity, minimum_stock, product_id) VALUES (0, 4, 16);

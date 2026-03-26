@@ -43,4 +43,11 @@ public class ProductStockService {
         return products.map(ProductStockDTO::new);
     }
 
+    //FIND ALL PRODUCTS OUT OF STOCK
+    @Transactional
+    public Page<ProductStockDTO> findAllOutOfStock(Pageable pageable) {
+        Page<Product> products = repository.findAllProductsOutOfStock(pageable);
+        return products.map(ProductStockDTO::new);
+    }
+
 }

@@ -44,4 +44,10 @@ public class ProductStockController {
         return ResponseEntity.ok(productStockDTOs);
     }
 
+    //FIND ALL PRODUCTS OUT OF STOCK
+    @GetMapping(value = "/out-of-stock")
+    public ResponseEntity<Page<ProductStockDTO>> findAllOutOfStock(Pageable pageable) {
+        Page<ProductStockDTO> productStockDTOs = productStockService.findAllOutOfStock(pageable);
+        return ResponseEntity.ok(productStockDTOs);
+    }
 }
