@@ -1,0 +1,37 @@
+package com.rpdevelopment.product_inventory_service.DTO.error;
+
+import java.time.Instant;
+
+public class CustomErrorDto {
+
+    //ATRIBUTOS
+    private Instant timestamp;
+    private Integer status;
+    private String error;
+    private String path;
+
+    //CONSTRUTORES
+    public CustomErrorDto(Instant timestamp, Integer status, String error, String path) {
+        this.timestamp = timestamp;
+        this.status = status;
+        this.error = error;
+        this.path = path;
+    }
+
+    //GETTER
+    public Instant getTimestamp() {
+        return timestamp;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public String getPath() {
+        return path;
+    }
+}

@@ -2,6 +2,7 @@ package com.rpdevelopment.product_inventory_service.DTO;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.rpdevelopment.product_inventory_service.entities.Category;
+import jakarta.validation.constraints.NotBlank;
 
 @JsonPropertyOrder({ "id", "name" })
 public class CategoryDTO {
@@ -9,6 +10,7 @@ public class CategoryDTO {
     //========== ATRIBUTOS ==============
 
     private Long id;
+    @NotBlank(message = "Campo nome requerido")
     private String name;
 
 
