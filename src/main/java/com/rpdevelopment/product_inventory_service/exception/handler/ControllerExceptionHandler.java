@@ -1,10 +1,10 @@
-package com.rpdevelopment.product_inventory_service.handler;
+package com.rpdevelopment.product_inventory_service.exception.handler;
 
-import com.rpdevelopment.product_inventory_service.DTO.error.CustomErrorDto;
-import com.rpdevelopment.product_inventory_service.DTO.error.ValidateErrorDto;
-import com.rpdevelopment.product_inventory_service.exceptions.DuplicateResourceException;
-import com.rpdevelopment.product_inventory_service.exceptions.ForbiddenException;
-import com.rpdevelopment.product_inventory_service.exceptions.ResourceNotFoundException;
+import com.rpdevelopment.product_inventory_service.dto.error.CustomErrorDto;
+import com.rpdevelopment.product_inventory_service.dto.error.ValidateErrorDto;
+import com.rpdevelopment.product_inventory_service.exception.exceptions.DuplicateResourceException;
+import com.rpdevelopment.product_inventory_service.exception.exceptions.ForbiddenException;
+import com.rpdevelopment.product_inventory_service.exception.exceptions.ResourceNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;

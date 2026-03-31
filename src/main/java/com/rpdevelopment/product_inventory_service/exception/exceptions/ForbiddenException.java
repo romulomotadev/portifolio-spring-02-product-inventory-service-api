@@ -1,4 +1,4 @@
-package com.rpdevelopment.product_inventory_service.exceptions;
+package com.rpdevelopment.product_inventory_service.exception.exceptions;
 
 public class ForbiddenException extends RuntimeException {
 

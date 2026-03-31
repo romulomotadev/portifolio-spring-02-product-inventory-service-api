@@ -1,6 +1,6 @@
-package com.rpdevelopment.product_inventory_service.DTO;
+package com.rpdevelopment.product_inventory_service.dto.product;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.rpdevelopment.product_inventory_service.dto.category.CategoryDTO;
 import com.rpdevelopment.product_inventory_service.entities.Category;
 import com.rpdevelopment.product_inventory_service.entities.Product;
 

@@ -1,4 +1,4 @@
-package com.rpdevelopment.product_inventory_service.projection;
+package com.rpdevelopment.product_inventory_service.dto.projection;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 

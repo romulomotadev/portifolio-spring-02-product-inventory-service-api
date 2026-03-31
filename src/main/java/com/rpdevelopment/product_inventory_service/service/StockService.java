@@ -1,8 +1,8 @@
 package com.rpdevelopment.product_inventory_service.service;
 
-import com.rpdevelopment.product_inventory_service.DTO.ProductStockDTO;
+import com.rpdevelopment.product_inventory_service.dto.product.ProductStockDTO;
 import com.rpdevelopment.product_inventory_service.entities.Product;
-import com.rpdevelopment.product_inventory_service.exceptions.ResourceNotFoundException;
+import com.rpdevelopment.product_inventory_service.exception.exceptions.ResourceNotFoundException;
 import com.rpdevelopment.product_inventory_service.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class ProductStockService {
+public class StockService {
 
     //======= DEPENDENCIAS ===========
 
@@ -44,7 +44,7 @@ public class ProductStockService {
     }
 
     //FIND ALL PRODUCTS OUT OF STOCK
-    @Transactional
+    @Transactional(readOnly = true)
     public Page<ProductStockDTO> findAllOutOfStock(Pageable pageable) {
         Page<Product> products = repository.findAllProductsOutOfStock(pageable);
         return products.map(ProductStockDTO::new);

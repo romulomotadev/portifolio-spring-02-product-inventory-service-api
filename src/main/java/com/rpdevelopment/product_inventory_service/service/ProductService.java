@@ -1,9 +1,14 @@
 package com.rpdevelopment.product_inventory_service.service;
 
-import com.rpdevelopment.product_inventory_service.DTO.ProductCategoryDTO;
+import com.rpdevelopment.product_inventory_service.dto.category.CategoryDTO;
+import com.rpdevelopment.product_inventory_service.dto.product.ProductCategoryDTO;
+import com.rpdevelopment.product_inventory_service.dto.product.ProductCategoryStockDTO;
+import com.rpdevelopment.product_inventory_service.entities.Category;
 import com.rpdevelopment.product_inventory_service.entities.Product;
-import com.rpdevelopment.product_inventory_service.exceptions.ResourceNotFoundException;
-import com.rpdevelopment.product_inventory_service.projection.ProductCategoryProjection;
+import com.rpdevelopment.product_inventory_service.entities.Stock;
+import com.rpdevelopment.product_inventory_service.exception.exceptions.ResourceNotFoundException;
+import com.rpdevelopment.product_inventory_service.dto.projection.ProductCategoryProjection;
+import com.rpdevelopment.product_inventory_service.repository.CategoryRepository;
 import com.rpdevelopment.product_inventory_service.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,12 +18,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
-public class ProductCategoryService {
+public class ProductService {
 
     //========= DEPENDENCIAS ============
 
     @Autowired
     private ProductRepository productRepository;
+    @Autowired
+    private CategoryRepository categoryRepository;
 
 
     //============= GET ===============
@@ -66,4 +73,36 @@ public class ProductCategoryService {
         Page<Product> searchByName = productRepository.findByNameContainingIgnoreCaseOrderByNameAsc(productName, pageable);
         return searchByName.map(ProductCategoryDTO::new);
     }
+
+    //============= POST ===============
+
+    @Transactional
+    public ProductCategoryStockDTO insert(ProductCategoryStockDTO productCategoryStockDTO) {
+
+        Product product = new Product();
+        product.setName(productCategoryStockDTO.getName());
+        product.setDescription(productCategoryStockDTO.getDescription());
+        product.setSku(productCategoryStockDTO.getSku());
+        product.setPrice(productCategoryStockDTO.getPrice());
+        product.setActive(productCategoryStockDTO.isActive());
+
+        for (CategoryDTO categoryDTO : productCategoryStockDTO.getCategories()) {
+
+            Category category = categoryRepository.findById(categoryDTO.getId())
+                    .orElseThrow(() -> new ResourceNotFoundException("Category not found"));
+
+            product.getCategories().add(category);
+        }
+
+        Stock stock = new Stock();
+        stock.setQuantity((productCategoryStockDTO.getStock().getQuantity()));
+        stock.setMinimium_stock((productCategoryStockDTO.getStock().getMinimium_stock()));
+
+        product.setStock(stock);
+
+        product = productRepository.save(product);
+
+        return new ProductCategoryStockDTO(product);
+    }
+
 }

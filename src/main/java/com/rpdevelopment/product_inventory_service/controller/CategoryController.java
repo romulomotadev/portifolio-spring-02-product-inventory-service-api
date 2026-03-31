@@ -1,6 +1,6 @@
 package com.rpdevelopment.product_inventory_service.controller;
 
-import com.rpdevelopment.product_inventory_service.DTO.CategoryDTO;
+import com.rpdevelopment.product_inventory_service.dto.category.CategoryDTO;
 import com.rpdevelopment.product_inventory_service.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

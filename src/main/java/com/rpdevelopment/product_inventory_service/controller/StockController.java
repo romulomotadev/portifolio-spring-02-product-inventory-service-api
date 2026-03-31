@@ -1,7 +1,7 @@
 package com.rpdevelopment.product_inventory_service.controller;
 
-import com.rpdevelopment.product_inventory_service.DTO.ProductStockDTO;
-import com.rpdevelopment.product_inventory_service.service.ProductStockService;
+import com.rpdevelopment.product_inventory_service.dto.product.ProductStockDTO;
+import com.rpdevelopment.product_inventory_service.service.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "/stocks")
-public class ProductStockController {
+public class StockController {
 
     // ======= DEPENDENCIAS ===========
 
     @Autowired
-    private ProductStockService productStockService;
+    private StockService productStockService;
 
 
     // ========== GET ==============

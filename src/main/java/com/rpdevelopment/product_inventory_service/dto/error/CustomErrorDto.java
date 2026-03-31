@@ -1,4 +1,4 @@
-package com.rpdevelopment.product_inventory_service.DTO.error;
+package com.rpdevelopment.product_inventory_service.dto.error;
 
 import java.time.Instant;
 

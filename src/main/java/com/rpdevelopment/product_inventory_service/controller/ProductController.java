@@ -1,8 +1,9 @@
 package com.rpdevelopment.product_inventory_service.controller;
 
-import com.rpdevelopment.product_inventory_service.DTO.ProductCategoryDTO;
-import com.rpdevelopment.product_inventory_service.projection.ProductCategoryProjection;
-import com.rpdevelopment.product_inventory_service.service.ProductCategoryService;
+import com.rpdevelopment.product_inventory_service.dto.product.ProductCategoryDTO;
+import com.rpdevelopment.product_inventory_service.dto.product.ProductCategoryStockDTO;
+import com.rpdevelopment.product_inventory_service.dto.projection.ProductCategoryProjection;
+import com.rpdevelopment.product_inventory_service.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,12 +12,12 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/products")
-public class ProductCategoryController {
+public class ProductController {
 
     //========= DEPENDENCIAS ==============
 
     @Autowired
-    private ProductCategoryService productService;
+    private ProductService productService;
 
 
     //========= GET ==============
@@ -68,5 +69,15 @@ public class ProductCategoryController {
             String name, Pageable pageable) {
         Page<ProductCategoryDTO> searchByName = productService.searchByName(name, pageable);
         return ResponseEntity.ok(searchByName);
+    }
+
+
+    //========= POST ==============
+
+    //NEW PRODUCT
+    @PostMapping
+    public ResponseEntity<ProductCategoryStockDTO> create(@RequestBody ProductCategoryStockDTO productCateProductCategoryStockDTOgoryDTO) {
+        ProductCategoryStockDTO newProduct = productService.insert(productCateProductCategoryStockDTOgoryDTO);
+        return ResponseEntity.ok(newProduct);
     }
 }
