@@ -1,5 +1,6 @@
 package com.rpdevelopment.product_inventory_service.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -33,6 +34,7 @@ public class Product {
 
     //===== ATRIBUTOS RELACIONADOS =======
 
+    @JsonManagedReference
     @OneToOne(mappedBy = "product", cascade = CascadeType.ALL)
     private Stock stock;
 

@@ -74,6 +74,7 @@ public class ProductService {
         return searchByName.map(ProductCategoryDTO::new);
     }
 
+
     //============= POST ===============
 
     @Transactional
@@ -96,7 +97,8 @@ public class ProductService {
 
         Stock stock = new Stock();
         stock.setQuantity((productCategoryStockDTO.getStock().getQuantity()));
-        stock.setMinimium_stock((productCategoryStockDTO.getStock().getMinimium_stock()));
+        stock.setMinimum_stock(productCategoryStockDTO.getStock().getMinimum_stock());
+        stock.setProduct(product);
 
         product.setStock(stock);
 

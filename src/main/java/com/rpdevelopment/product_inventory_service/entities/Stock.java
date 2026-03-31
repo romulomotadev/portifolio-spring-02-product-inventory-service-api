@@ -1,5 +1,6 @@
 package com.rpdevelopment.product_inventory_service.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -17,6 +18,7 @@ public class Stock {
 
     //===== ATRIBUTOS RELACIONADOS =======
 
+    @JsonBackReference
     @OneToOne
     @JoinColumn(name = "product_id")
     private Product product;
@@ -27,10 +29,11 @@ public class Stock {
     public Stock() {
     }
 
-    public Stock(Long id, Integer quantity, Integer minimium_stock) {
+    public Stock(Long id, Integer quantity, Integer minimum_stock, Product product) {
         this.id = id;
         this.quantity = quantity;
-        this.minimum_stock = minimium_stock;
+        this.minimum_stock = minimum_stock;
+        this.product = product;
     }
 
 
@@ -52,11 +55,19 @@ public class Stock {
         this.quantity = quantity;
     }
 
-    public Integer getMinimium_stock() {
+    public Integer getMinimum_stock() {
         return minimum_stock;
     }
 
-    public void setMinimium_stock(Integer minimium_stock) {
-        this.minimum_stock = minimium_stock;
+    public void setMinimum_stock(Integer minimum_stock) {
+        this.minimum_stock = minimum_stock;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }
