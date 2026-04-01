@@ -76,8 +76,18 @@ public class ProductController {
 
     //NEW PRODUCT
     @PostMapping
-    public ResponseEntity<ProductCategoryStockDTO> create(@RequestBody ProductCategoryStockDTO productCateProductCategoryStockDTOgoryDTO) {
-        ProductCategoryStockDTO newProduct = productService.insert(productCateProductCategoryStockDTOgoryDTO);
+    public ResponseEntity<ProductCategoryStockDTO> create(@RequestBody ProductCategoryStockDTO productCategoryStockDTO) {
+        ProductCategoryStockDTO newProduct = productService.insert(productCategoryStockDTO);
         return ResponseEntity.ok(newProduct);
+    }
+
+
+    //========= UPDATE ===========
+
+    // PUT PRODUCT AND CATEGORY
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<ProductCategoryDTO> update(@PathVariable Long id, @RequestBody ProductCategoryDTO productCategoryDTO) {
+        ProductCategoryDTO updatedProduct = productService.update(productCategoryDTO, id);
+        return ResponseEntity.ok(updatedProduct);
     }
 }

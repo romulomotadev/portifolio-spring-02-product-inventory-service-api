@@ -16,6 +16,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.*;
+
 
 @Service
 public class ProductService {
@@ -77,21 +79,16 @@ public class ProductService {
 
     //============= POST ===============
 
+    // ADD NEW PRODUCT AND STOCK AND SELECT CATEGORY
     @Transactional
     public ProductCategoryStockDTO insert(ProductCategoryStockDTO productCategoryStockDTO) {
 
         Product product = new Product();
-        product.setName(productCategoryStockDTO.getName());
-        product.setDescription(productCategoryStockDTO.getDescription());
-        product.setSku(productCategoryStockDTO.getSku());
-        product.setPrice(productCategoryStockDTO.getPrice());
-        product.setActive(productCategoryStockDTO.isActive());
+        productDtoToEntity(productCategoryStockDTO, product);
 
         for (CategoryDTO categoryDTO : productCategoryStockDTO.getCategories()) {
-
             Category category = categoryRepository.findById(categoryDTO.getId())
                     .orElseThrow(() -> new ResourceNotFoundException("Category not found"));
-
             product.getCategories().add(category);
         }
 
@@ -101,10 +98,47 @@ public class ProductService {
         stock.setProduct(product);
 
         product.setStock(stock);
-
         product = productRepository.save(product);
 
         return new ProductCategoryStockDTO(product);
+    }
+
+
+    //============= UPDATE ===============
+
+    // PUT PRODUCT AND CATEGORY
+    @Transactional
+    public ProductCategoryDTO update(ProductCategoryDTO productCategoryDTO, Long id) {
+
+        Product product = productRepository.findById(id).orElseThrow(
+                () -> new ResourceNotFoundException("Resource not found"));
+        productDtoToEntity(productCategoryDTO, product);
+
+        Set<Category> aux = new HashSet<>();
+        for(Category category : categoryRepository.findAll()){
+            for(CategoryDTO categoryDTO : productCategoryDTO.getCategories()){
+                if(categoryDTO.getId().equals(category.getId())){
+                    aux.add(category);
+                }
+            }
+        }
+        productRepository.findById(id).get().getCategories().clear();
+        productRepository.findById(id).get().getCategories().addAll(aux);
+
+        productRepository.save(product);
+        return new ProductCategoryDTO(product);
+    }
+
+
+    //MÉTODOS
+
+    //COPY PRODUCT DTO TO ENTITY
+    public void productDtoToEntity(ProductCategoryDTO productCategoryDTO, Product product) {
+        product.setName(productCategoryDTO.getName());
+        product.setDescription(productCategoryDTO.getDescription());
+        product.setSku(productCategoryDTO.getSku());
+        product.setPrice(productCategoryDTO.getPrice());
+        product.setActive(productCategoryDTO.isActive());
     }
 
 }
