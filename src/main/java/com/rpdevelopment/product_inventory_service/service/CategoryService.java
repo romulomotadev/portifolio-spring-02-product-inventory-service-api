@@ -48,4 +48,16 @@ public class CategoryService {
         return new CategoryDTO(savedCategory);
     }
 
+
+    // =========== UPDATE ==============
+
+    @Transactional
+    public CategoryDTO update(CategoryDTO categoryDTO, Long id){
+        Category category = repository.findById(id).orElseThrow(
+                () -> new ResourceNotFoundException("Category not found"));
+
+        category.setName(categoryDTO.getName());
+        repository.save(category);
+        return new CategoryDTO(category);
+    }
 }

@@ -33,12 +33,21 @@ public class CategoryController {
     }
 
 
-    // =========== POST ==============
+    // ========= POST ==========
 
     // NEW CATEGORY
     @PostMapping
     public ResponseEntity<CategoryDTO> save(@RequestBody CategoryDTO dto) {
         return ResponseEntity.ok(service.save(dto));
     }
+
+
+    // ========= UPDATE ==========
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<CategoryDTO> update(@RequestBody CategoryDTO dto, @PathVariable Long id) {
+        return ResponseEntity.ok(service.update(dto, id));
+    }
+
 
 }
