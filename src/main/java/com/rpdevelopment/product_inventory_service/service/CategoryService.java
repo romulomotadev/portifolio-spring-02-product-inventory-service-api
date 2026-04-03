@@ -60,4 +60,15 @@ public class CategoryService {
         repository.save(category);
         return new CategoryDTO(category);
     }
+
+
+    // ========= DELETE ==========
+
+    // DELETE CATEGORY
+    @Transactional
+    public void delete(Long id){
+        Category category = repository.findById(id).orElseThrow(
+                ()-> new ResourceNotFoundException("Category not found"));
+        repository.delete(category);
+    }
 }
