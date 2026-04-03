@@ -36,7 +36,7 @@ public class Product {
 
     @JsonManagedReference
     @OneToOne(mappedBy = "product", cascade = CascadeType.ALL)
-    private Stock stock;
+    private StockDTO stock;
 
 
     //========== CONSTRUTORES ==============
@@ -106,11 +106,11 @@ public class Product {
         this.active = active;
     }
 
-    public Stock getStock() {
+    public StockDTO getStock() {
         return stock;
     }
 
-    public void setStock(Stock stock) {
+    public void setStock(StockDTO stock) {
         this.stock = stock;
     }
 

@@ -5,7 +5,7 @@ import com.rpdevelopment.product_inventory_service.dto.product.ProductCategoryDT
 import com.rpdevelopment.product_inventory_service.dto.product.ProductCategoryStockDTO;
 import com.rpdevelopment.product_inventory_service.entities.Category;
 import com.rpdevelopment.product_inventory_service.entities.Product;
-import com.rpdevelopment.product_inventory_service.entities.Stock;
+import com.rpdevelopment.product_inventory_service.entities.StockDTO;
 import com.rpdevelopment.product_inventory_service.exception.exceptions.ResourceNotFoundException;
 import com.rpdevelopment.product_inventory_service.dto.projection.ProductCategoryProjection;
 import com.rpdevelopment.product_inventory_service.repository.CategoryRepository;
@@ -92,7 +92,7 @@ public class ProductService {
             product.getCategories().add(category);
         }
 
-        Stock stock = new Stock();
+        StockDTO stock = new StockDTO();
         stock.setQuantity((productCategoryStockDTO.getStock().getQuantity()));
         stock.setMinimum_stock(productCategoryStockDTO.getStock().getMinimum_stock());
         stock.setProduct(product);

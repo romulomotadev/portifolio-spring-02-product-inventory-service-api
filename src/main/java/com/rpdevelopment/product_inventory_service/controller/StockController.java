@@ -1,15 +1,13 @@
 package com.rpdevelopment.product_inventory_service.controller;
 
 import com.rpdevelopment.product_inventory_service.dto.product.ProductStockDTO;
+import com.rpdevelopment.product_inventory_service.dto.stock.StockDTO;
 import com.rpdevelopment.product_inventory_service.service.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/stocks")
@@ -19,6 +17,8 @@ public class StockController {
 
     @Autowired
     private StockService productStockService;
+    @Autowired
+    private StockService stockService;
 
 
     // ========== GET ==============
@@ -50,4 +50,15 @@ public class StockController {
         Page<ProductStockDTO> productStockDTOs = productStockService.findAllOutOfStock(pageable);
         return ResponseEntity.ok(productStockDTOs);
     }
+
+
+    // ========== UPDATE ==============
+
+    // UPDATE STOCK BY PRODUCT
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<StockDTO> update(@PathVariable Long id, @RequestBody StockDTO  stockDTO) {
+        stockDTO = stockService.update(id, stockDTO);
+        return ResponseEntity.ok(stockDTO);
+    }
+
 }
