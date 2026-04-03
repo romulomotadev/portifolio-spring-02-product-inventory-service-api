@@ -130,7 +130,18 @@ public class ProductService {
     }
 
 
-    //MÉTODOS
+    //============= UPDATE ===============
+
+    // DELETE CATEGORY
+    @Transactional
+    public void delete(Long id) {
+        Product product = productRepository.findById(id).orElseThrow(
+                ()-> new ResourceNotFoundException("Resource not found"));
+        productRepository.delete(product);
+    }
+
+
+    //============= METODOS ===============
 
     //COPY PRODUCT DTO TO ENTITY
     public void productDtoToEntity(ProductCategoryDTO productCategoryDTO, Product product) {

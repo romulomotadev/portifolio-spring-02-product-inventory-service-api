@@ -2,6 +2,7 @@ package com.rpdevelopment.product_inventory_service.controller;
 
 import com.rpdevelopment.product_inventory_service.dto.product.ProductCategoryDTO;
 import com.rpdevelopment.product_inventory_service.dto.product.ProductCategoryStockDTO;
+import com.rpdevelopment.product_inventory_service.dto.product.ProductStockDTO;
 import com.rpdevelopment.product_inventory_service.dto.projection.ProductCategoryProjection;
 import com.rpdevelopment.product_inventory_service.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,4 +91,15 @@ public class ProductController {
         ProductCategoryDTO updatedProduct = productService.update(productCategoryDTO, id);
         return ResponseEntity.ok(updatedProduct);
     }
+
+
+    //========= DELETE ===========
+
+    // DELETE PRODUCT AND STOCK ASSOCIATE
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        productService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }
