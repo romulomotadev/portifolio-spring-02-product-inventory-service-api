@@ -3,6 +3,7 @@ package com.rpdevelopment.product_inventory_service.dto.product;
 import com.rpdevelopment.product_inventory_service.dto.category.CategoryDTO;
 import com.rpdevelopment.product_inventory_service.dto.stock.StockDTO;
 import com.rpdevelopment.product_inventory_service.entities.Product;
+import jakarta.validation.Valid;
 
 import java.util.Set;
 
@@ -10,6 +11,7 @@ public class ProductCategoryStockDTO extends ProductCategoryDTO {
 
     //===== ATRIBUTOS RELACIONADOS =======
 
+    @Valid
     private StockDTO stock;
 
 

@@ -2,6 +2,7 @@ package com.rpdevelopment.product_inventory_service.dto.product;
 
 import com.rpdevelopment.product_inventory_service.entities.Product;
 import com.rpdevelopment.product_inventory_service.entities.StockDTO;
+import jakarta.validation.Valid;
 
 
 public class ProductStockDTO extends ProductDTO {
@@ -9,6 +10,7 @@ public class ProductStockDTO extends ProductDTO {
 
     //===== ATRIBUTOS RELACIONADOS =======
 
+    @Valid
     private StockDTO stockDTO;
 
 

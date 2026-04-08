@@ -35,7 +35,7 @@ public class ControllerExceptionHandler {
     // TRATANDO DADOS INVÁLIDOS
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<CustomErrorDto> argumentNotValid(MethodArgumentNotValidException e, HttpServletRequest request) {
-        HttpStatus status = HttpStatus.UNPROCESSABLE_ENTITY;
+        HttpStatus status = HttpStatus.BAD_REQUEST;
         ValidateErrorDto err = new ValidateErrorDto(
                 Instant.now(),
                 status.value(),

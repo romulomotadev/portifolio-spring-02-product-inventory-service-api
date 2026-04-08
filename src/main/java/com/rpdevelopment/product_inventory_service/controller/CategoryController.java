@@ -2,6 +2,7 @@ package com.rpdevelopment.product_inventory_service.controller;
 
 import com.rpdevelopment.product_inventory_service.dto.category.CategoryDTO;
 import com.rpdevelopment.product_inventory_service.service.CategoryService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,7 +38,7 @@ public class CategoryController {
 
     // NEW CATEGORY
     @PostMapping
-    public ResponseEntity<CategoryDTO> save(@RequestBody CategoryDTO dto) {
+    public ResponseEntity<CategoryDTO> save(@Valid @RequestBody CategoryDTO dto) {
         return ResponseEntity.ok(service.save(dto));
     }
 
@@ -46,7 +47,7 @@ public class CategoryController {
 
     // UPDATE CATEGORY
     @PutMapping(value = "/{id}")
-    public ResponseEntity<CategoryDTO> update(@RequestBody CategoryDTO dto, @PathVariable Long id) {
+    public ResponseEntity<CategoryDTO> update(@Valid @RequestBody CategoryDTO dto, @PathVariable Long id) {
         return ResponseEntity.ok(service.update(dto, id));
     }
 

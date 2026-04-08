@@ -3,6 +3,7 @@ package com.rpdevelopment.product_inventory_service.dto.product;
 import com.rpdevelopment.product_inventory_service.dto.category.CategoryDTO;
 import com.rpdevelopment.product_inventory_service.entities.Category;
 import com.rpdevelopment.product_inventory_service.entities.Product;
+import jakarta.validation.Valid;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -2,6 +2,9 @@ package com.rpdevelopment.product_inventory_service.dto.product;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.rpdevelopment.product_inventory_service.entities.Product;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
 @JsonPropertyOrder({ "id", "name", "description", "sku", "price", "active"})
 public class ProductDTO {
@@ -9,9 +12,17 @@ public class ProductDTO {
     //========== ATRIBUTOS ==============
 
     private Long id;
+
+    @NotBlank(message = "Campo nome produto requerido")
     private String name;
+
     private String description;
+
+    @NotBlank(message = "Campo SKU requerido")
     private String sku;
+
+    @NotNull(message = "Campo preço requerido")
+    @Positive(message = "Preço deve ser maior que zero")
     private Double price;
     private boolean active;
 

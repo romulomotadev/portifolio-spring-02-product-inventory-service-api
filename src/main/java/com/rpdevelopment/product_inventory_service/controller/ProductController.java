@@ -5,6 +5,7 @@ import com.rpdevelopment.product_inventory_service.dto.product.ProductCategorySt
 import com.rpdevelopment.product_inventory_service.dto.product.ProductStockDTO;
 import com.rpdevelopment.product_inventory_service.dto.projection.ProductCategoryProjection;
 import com.rpdevelopment.product_inventory_service.service.ProductService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -77,7 +78,7 @@ public class ProductController {
 
     //NEW PRODUCT
     @PostMapping
-    public ResponseEntity<ProductCategoryStockDTO> create(@RequestBody ProductCategoryStockDTO productCategoryStockDTO) {
+    public ResponseEntity<ProductCategoryStockDTO> create(@Valid @RequestBody ProductCategoryStockDTO productCategoryStockDTO) {
         ProductCategoryStockDTO newProduct = productService.insert(productCategoryStockDTO);
         return ResponseEntity.ok(newProduct);
     }
@@ -87,7 +88,7 @@ public class ProductController {
 
     // PUT PRODUCT AND CATEGORY
     @PutMapping(value = "/{id}")
-    public ResponseEntity<ProductCategoryDTO> update(@PathVariable Long id, @RequestBody ProductCategoryDTO productCategoryDTO) {
+    public ResponseEntity<ProductCategoryDTO> update(@PathVariable Long id, @Valid @RequestBody ProductCategoryDTO productCategoryDTO) {
         ProductCategoryDTO updatedProduct = productService.update(productCategoryDTO, id);
         return ResponseEntity.ok(updatedProduct);
     }

@@ -2,13 +2,21 @@ package com.rpdevelopment.product_inventory_service.dto.stock;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.rpdevelopment.product_inventory_service.entities.Product;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
 public class StockDTO {
 
     //======== ATRIBUTOS =============
 
     private Long id;
+
+    @Positive( message = "A quantidade minima deve ser maior que zero")
     private Integer quantity;
+
+    @Positive( message = "O estoque mínimo deve ser maior que zero")
     private Integer minimum_stock;
 
 

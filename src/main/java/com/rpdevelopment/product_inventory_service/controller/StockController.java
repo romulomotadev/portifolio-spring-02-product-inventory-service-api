@@ -3,6 +3,7 @@ package com.rpdevelopment.product_inventory_service.controller;
 import com.rpdevelopment.product_inventory_service.dto.product.ProductStockDTO;
 import com.rpdevelopment.product_inventory_service.dto.stock.StockDTO;
 import com.rpdevelopment.product_inventory_service.service.StockService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -56,7 +57,7 @@ public class StockController {
 
     // UPDATE STOCK BY PRODUCT
     @PutMapping(value = "/{id}")
-    public ResponseEntity<StockDTO> update(@PathVariable Long id, @RequestBody StockDTO  stockDTO) {
+    public ResponseEntity<StockDTO> update(@PathVariable Long id, @Valid @RequestBody StockDTO  stockDTO) {
         stockDTO = stockService.update(id, stockDTO);
         return ResponseEntity.ok(stockDTO);
     }
