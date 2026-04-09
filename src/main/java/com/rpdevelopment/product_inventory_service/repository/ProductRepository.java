@@ -1,6 +1,6 @@
 package com.rpdevelopment.product_inventory_service.repository;
 
-import com.rpdevelopment.product_inventory_service.entities.Product;
+import com.rpdevelopment.product_inventory_service.entity.Product;
 import com.rpdevelopment.product_inventory_service.dto.projection.ProductCategoryProjection;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

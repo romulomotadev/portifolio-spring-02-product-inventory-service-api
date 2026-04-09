@@ -1,7 +1,7 @@
 package com.rpdevelopment.product_inventory_service.service;
 
 import com.rpdevelopment.product_inventory_service.dto.category.CategoryDTO;
-import com.rpdevelopment.product_inventory_service.entities.Category;
+import com.rpdevelopment.product_inventory_service.entity.Category;
 import com.rpdevelopment.product_inventory_service.exception.exceptions.ResourceNotFoundException;
 import com.rpdevelopment.product_inventory_service.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;

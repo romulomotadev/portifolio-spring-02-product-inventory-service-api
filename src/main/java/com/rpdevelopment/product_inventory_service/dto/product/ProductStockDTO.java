@@ -1,7 +1,7 @@
 package com.rpdevelopment.product_inventory_service.dto.product;
 
-import com.rpdevelopment.product_inventory_service.entities.Product;
-import com.rpdevelopment.product_inventory_service.entities.StockDTO;
+import com.rpdevelopment.product_inventory_service.entity.Product;
+import com.rpdevelopment.product_inventory_service.entity.StockDTO;
 import jakarta.validation.Valid;
 
 

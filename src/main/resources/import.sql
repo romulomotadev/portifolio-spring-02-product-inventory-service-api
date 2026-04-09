@@ -76,3 +76,24 @@ INSERT INTO tb_stock(quantity, minimum_stock, product_id) VALUES (2, 4, 14);
 
 INSERT INTO tb_stock(quantity, minimum_stock, product_id) VALUES (0, 5, 15);
 INSERT INTO tb_stock(quantity, minimum_stock, product_id) VALUES (0, 4, 16);
+
+
+---------------- USER ----------------
+
+INSERT INTO tb_user (name, email, password) VALUES ('Admin', 'admin@gmail.com',  '$2a$10$Sh9KgmTnMlSaBjoSRnbR..8P0y.n9AufZJNk6Ag819/nQrGY4GY6m');
+INSERT INTO tb_user (name, email, password) VALUES ('User', 'user@gmail.com',  '$2a$10$Sh9KgmTnMlSaBjoSRnbR..8P0y.n9AufZJNk6Ag819/nQrGY4GY6m');
+INSERT INTO tb_user (name, email, password) VALUES ('Test Email', 'phetrovesk@gmail.com',  '$2a$10$Sh9KgmTnMlSaBjoSRnbR..8P0y.n9AufZJNk6Ag819/nQrGY4GY6m');
+
+
+---------------- ROLES ----------------
+
+INSERT INTO tb_role (authority) VALUES ('ROLE_ADMIN');
+INSERT INTO tb_role (authority) VALUES ('ROLE_USER');
+
+
+---------------- PERFIL ----------------
+
+INSERT INTO tb_user_role (user_id, role_id) VALUES (1, 1);
+INSERT INTO tb_user_role (user_id, role_id) VALUES (1, 2);
+INSERT INTO tb_user_role (user_id, role_id) VALUES (2, 2);
+INSERT INTO tb_user_role (user_id, role_id) VALUES (3, 2);

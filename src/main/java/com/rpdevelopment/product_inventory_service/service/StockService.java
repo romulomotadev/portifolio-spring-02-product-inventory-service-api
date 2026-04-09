@@ -1,8 +1,8 @@
 package com.rpdevelopment.product_inventory_service.service;
 
 import com.rpdevelopment.product_inventory_service.dto.product.ProductStockDTO;
-import com.rpdevelopment.product_inventory_service.entities.Product;
-import com.rpdevelopment.product_inventory_service.entities.StockDTO;
+import com.rpdevelopment.product_inventory_service.entity.Product;
+import com.rpdevelopment.product_inventory_service.entity.StockDTO;
 import com.rpdevelopment.product_inventory_service.exception.exceptions.ResourceNotFoundException;
 import com.rpdevelopment.product_inventory_service.repository.ProductRepository;
 import com.rpdevelopment.product_inventory_service.repository.StockRepository;

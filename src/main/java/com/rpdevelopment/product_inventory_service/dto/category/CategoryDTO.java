@@ -1,7 +1,7 @@
 package com.rpdevelopment.product_inventory_service.dto.category;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.rpdevelopment.product_inventory_service.entities.Category;
+import com.rpdevelopment.product_inventory_service.entity.Category;
 import jakarta.validation.constraints.NotBlank;
 
 @JsonPropertyOrder({ "id", "name" })

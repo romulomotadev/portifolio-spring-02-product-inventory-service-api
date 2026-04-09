@@ -1,4 +1,4 @@
-package com.rpdevelopment.product_inventory_service.entities;
+package com.rpdevelopment.product_inventory_service.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;

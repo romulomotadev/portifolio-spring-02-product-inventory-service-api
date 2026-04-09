@@ -1,4 +1,4 @@
-package com.rpdevelopment.product_inventory_service.entities;
+package com.rpdevelopment.product_inventory_service.entity;
 
 import jakarta.persistence.*;
 

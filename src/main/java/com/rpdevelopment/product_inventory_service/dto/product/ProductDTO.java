@@ -1,7 +1,7 @@
 package com.rpdevelopment.product_inventory_service.dto.product;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.rpdevelopment.product_inventory_service.entities.Product;
+import com.rpdevelopment.product_inventory_service.entity.Product;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
