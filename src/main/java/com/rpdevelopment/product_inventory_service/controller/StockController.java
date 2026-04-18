@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -25,6 +26,7 @@ public class StockController {
     // ========== GET ==============
 
     //FIND ALL
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping
     public ResponseEntity<Page<ProductStockDTO>> findAll(Pageable pageable) {
         Page<ProductStockDTO> productStockDTOs = productStockService.findAll(pageable);
@@ -32,12 +34,14 @@ public class StockController {
     }
 
     //FIND ID
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping(value = "/{id}")
     public ResponseEntity<ProductStockDTO> findById(@PathVariable Long id) {
         ProductStockDTO productStockDTO = productStockService.findById(id);
         return ResponseEntity.ok(productStockDTO);
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     //FIND ALL PRODUCT BY STOCK LOW
     @GetMapping(value = "/low")
     public ResponseEntity<Page<ProductStockDTO>> findAllStockLow(Pageable pageable) {
@@ -45,6 +49,7 @@ public class StockController {
         return ResponseEntity.ok(productStockDTOs);
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     //FIND ALL PRODUCTS OUT OF STOCK
     @GetMapping(value = "/out-of-stock")
     public ResponseEntity<Page<ProductStockDTO>> findAllOutOfStock(Pageable pageable) {
@@ -55,6 +60,7 @@ public class StockController {
 
     // ========== UPDATE ==============
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     // UPDATE STOCK BY PRODUCT
     @PutMapping(value = "/{id}")
     public ResponseEntity<StockDTO> update(@PathVariable Long id, @Valid @RequestBody StockDTO  stockDTO) {
