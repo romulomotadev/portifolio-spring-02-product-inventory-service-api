@@ -23,12 +23,14 @@ public class CategoryController {
     //============ GET ===============
 
     //FIND ALL
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
     @GetMapping
     public ResponseEntity<List<CategoryDTO>> findAll() {
         return ResponseEntity.ok(service.findAll());
     }
 
     //FIND BY ID
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
     @GetMapping(value = "/{id}")
     public ResponseEntity<CategoryDTO> findById(@PathVariable Long id) {
         return ResponseEntity.ok(service.findById(id));

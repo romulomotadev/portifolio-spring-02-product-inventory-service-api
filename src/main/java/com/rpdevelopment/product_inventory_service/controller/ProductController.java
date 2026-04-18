@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -25,6 +26,7 @@ public class ProductController {
     //========= GET ==============
 
     //FIND ALL
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
     @GetMapping
     public ResponseEntity<Page<ProductCategoryDTO>> findall(Pageable pageable) {
         Page<ProductCategoryDTO> products = productService.findAllProducts(pageable);
@@ -32,6 +34,7 @@ public class ProductController {
     }
 
     //FIND BY ID
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
     @GetMapping(value = "/{id}")
     public ResponseEntity<ProductCategoryDTO> findById(@PathVariable Long id) {
         ProductCategoryDTO productId = productService.findById(id);
@@ -39,6 +42,7 @@ public class ProductController {
     }
 
     //FIND BY SKU
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
     @GetMapping(value = "/sku")
     public ResponseEntity<ProductCategoryDTO> findBySku(
             @RequestParam(name = "sku") String sku ) {
@@ -47,6 +51,7 @@ public class ProductController {
     }
 
     //FIND ALL PRODUCT ACTIVE
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping(value = "/active")
     public ResponseEntity<Page<ProductCategoryDTO>> findAllByActive(
             @RequestParam(name = "active", defaultValue = "true")
@@ -56,6 +61,7 @@ public class ProductController {
     }
 
     //FIND ALL PRODUCTS BY CATEGORY
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
     @GetMapping(value = "/category")
     public ResponseEntity<Page<ProductCategoryProjection>> findAllByCategory(
             @RequestParam(name = "category", defaultValue = "")
@@ -65,6 +71,7 @@ public class ProductController {
     }
 
     //FIND ALL PRODUCTS BY NAME (SEARCH)
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
     @GetMapping(value = "/name")
     public ResponseEntity<Page<ProductCategoryDTO>> seachByName(
             @RequestParam(name = "name", defaultValue = "")
@@ -77,6 +84,7 @@ public class ProductController {
     //========= POST ==============
 
     //NEW PRODUCT
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PostMapping
     public ResponseEntity<ProductCategoryStockDTO> create(@Valid @RequestBody ProductCategoryStockDTO productCategoryStockDTO) {
         ProductCategoryStockDTO newProduct = productService.insert(productCategoryStockDTO);
@@ -87,6 +95,7 @@ public class ProductController {
     //========= UPDATE ===========
 
     // PUT PRODUCT AND CATEGORY
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PutMapping(value = "/{id}")
     public ResponseEntity<ProductCategoryDTO> update(@PathVariable Long id, @Valid @RequestBody ProductCategoryDTO productCategoryDTO) {
         ProductCategoryDTO updatedProduct = productService.update(productCategoryDTO, id);
@@ -97,6 +106,7 @@ public class ProductController {
     //========= DELETE ===========
 
     // DELETE PRODUCT AND STOCK ASSOCIATE
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         productService.delete(id);
