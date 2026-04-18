@@ -5,6 +5,7 @@ import com.rpdevelopment.product_inventory_service.service.CategoryService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,6 +38,7 @@ public class CategoryController {
     // ========= POST ==========
 
     // NEW CATEGORY
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PostMapping
     public ResponseEntity<CategoryDTO> save(@Valid @RequestBody CategoryDTO dto) {
         return ResponseEntity.ok(service.save(dto));
@@ -46,6 +48,7 @@ public class CategoryController {
     // ========= UPDATE ==========
 
     // UPDATE CATEGORY
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PutMapping(value = "/{id}")
     public ResponseEntity<CategoryDTO> update(@Valid @RequestBody CategoryDTO dto, @PathVariable Long id) {
         return ResponseEntity.ok(service.update(dto, id));
@@ -55,6 +58,7 @@ public class CategoryController {
     // ========= DELETE ==========
 
     // DELETE CATEGORY
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @DeleteMapping(value="/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         service.delete(id);

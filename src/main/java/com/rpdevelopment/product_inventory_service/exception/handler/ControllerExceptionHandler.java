@@ -56,7 +56,7 @@ public class ControllerExceptionHandler {
         CustomErrorDto err = new CustomErrorDto(
                 Instant.now(),
                 status.value(),
-                e.getMessage(),
+                "Integrity constraint violation",
                 request.getRequestURI()
         );
         return ResponseEntity.status(status).body(err);
