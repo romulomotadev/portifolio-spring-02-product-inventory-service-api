@@ -3,6 +3,7 @@ package com.rpdevelopment.product_inventory_service.entity;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
+import java.time.Instant;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -32,11 +33,19 @@ public class Product {
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> categories = new HashSet<>();
 
-    //===== ATRIBUTOS RELACIONADOS =======
-
+    //STOCK
     @JsonManagedReference
     @OneToOne(mappedBy = "product", cascade = CascadeType.ALL)
     private StockDTO stock;
+
+
+    //== ATRIBUTOS AUTOMATICOS | LOGS ======
+
+    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    private Instant createdAt;
+
+    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    private Instant updatedAt;
 
 
     //========== CONSTRUTORES ==============
@@ -53,6 +62,21 @@ public class Product {
         this.price = price;
         this.active = active;
         this.categories = categories;
+    }
+
+
+    //========== METODOS ==============
+
+    // LOGS POST
+    @PrePersist
+    public void prePersist() {
+        createdAt = Instant.now();
+    }
+
+    // LOGS UPDATE
+    @PreUpdate
+    public void preUpdate() {
+        updatedAt = Instant.now();
     }
 
 
@@ -116,6 +140,17 @@ public class Product {
 
     public Set<Category> getCategories() {
         return categories;
+    }
+
+
+    //======= GETTER LOGS ==========
+
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public Instant getUpdatedAt() {
+        return updatedAt;
     }
 
 
