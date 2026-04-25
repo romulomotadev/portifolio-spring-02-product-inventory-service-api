@@ -1,0 +1,45 @@
+{
+	"id": "b5613418-2c0a-4f78-a9ed-711ceec1ca79",
+	"name": "product inventory service",
+	"values": [
+		{
+			"key": "host",
+			"value": "http://localhost:8080",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "client-id",
+			"value": "myclientid",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "client-secret",
+			"value": "myclientsecret",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "username",
+			"value": "admin@gmail.com",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "password",
+			"value": "123456",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2026-04-25T00:22:12.791Z",
+	"_postman_exported_using": "Postman/10.24.25"
+}
