@@ -2,14 +2,19 @@ package com.rpdevelopment.product_inventory_service.dto.category;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.rpdevelopment.product_inventory_service.entity.Category;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 
+@Schema(description = "DTO responsável por representar o cadastro das categorias.")
 @JsonPropertyOrder({ "id", "name" })
 public class CategoryDTO {
 
     //========== ATRIBUTOS ==============
 
+    @Schema(description = "Identificador da categoria gerado automaticamente pelo banco de dados", example = "1")
     private Long id;
+
+    @Schema(description = "Nome da categoria", example = "Componentes")
     @NotBlank(message = "Campo nome requerido")
     private String name;
 
