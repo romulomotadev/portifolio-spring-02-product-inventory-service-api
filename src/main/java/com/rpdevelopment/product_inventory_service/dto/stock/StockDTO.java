@@ -2,17 +2,21 @@ package com.rpdevelopment.product_inventory_service.dto.stock;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.rpdevelopment.product_inventory_service.entity.Product;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Positive;
 
 public class StockDTO {
 
     //======== ATRIBUTOS =============
 
+    @Schema(description = "Identificador do estoque gerado automaticamente pelo banco de dados", example = "1")
     private Long id;
 
+    @Schema(description = "Define a quantidade do produto em estoque", example = "100")
     @Positive( message = "A quantidade minima deve ser maior que zero")
     private Integer quantity;
 
+    @Schema(description = "Define a quantidade minima do produto no estoque", example = "10")
     @Positive( message = "O estoque mínimo deve ser maior que zero")
     private Integer minimum_stock;
 

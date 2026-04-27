@@ -103,7 +103,7 @@ public class CategoryController {
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @Operation(
             summary = "Excluir categoria por ID",
-            description = "Exclui uma categoriad com base no ID informado. Caso a categoria não seja encontrado, será retornado status 404.",
+            description = "Exclui uma categoria com base no ID informado. Caso a categoria não seja encontrado, será retornado status 404.",
             responses = {
                     @ApiResponse(responseCode = "204", description = "Usuário excluído com sucesso"),
                     @ApiResponse(responseCode = "401", description = "Não autorizado"),
