@@ -49,14 +49,40 @@ Para facilitar a exploração da API, o projeto inclui:
 
 ---
 
-### 🔹 JWT e Autenticação
+---
 
-Todos os endpoints requerem autenticação JWT:
+## 🔐 Autenticação (JWT)
 
-1. Obtenha o token via endpoint `/login`.
-2. Clique em **Authorize** no Swagger UI.
-3. Cole o token no formato `Bearer <token>`.
-4. Execute as requisições nos endpoints protegidos.
+Esta API utiliza autenticação baseada em **JWT (Bearer Token)** para proteger os endpoints.
+
+### 📌 Como obter o token
+
+1. Realize a autenticação no endpoint `/login`
+2. Copie o token JWT retornado na resposta
+
+### 📌 Como utilizar no Swagger
+
+1. Clique no botão **Authorize** no Swagger UI
+2. Insira o token no formato:
+
+```
+Bearer seu_token_aqui
+```
+
+3. Clique em **Authorize**
+4. Agora você pode acessar os endpoints protegidos
+
+### 🔒 Endpoints protegidos
+
+Todos os endpoints exigem autenticação, exceto os responsáveis por login/autenticação.
+
+### 📥 Exemplo de resposta do login
+
+```json
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}
+```
 
 ---
 
