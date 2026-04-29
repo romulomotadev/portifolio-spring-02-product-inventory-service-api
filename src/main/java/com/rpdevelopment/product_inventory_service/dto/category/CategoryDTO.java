@@ -5,17 +5,17 @@ import com.rpdevelopment.product_inventory_service.entity.Category;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 
-@Schema(description = "DTO responsável por representar o cadastro das categorias.")
+@Schema(description = "Representa uma categoria do sistema.")
 @JsonPropertyOrder({ "id", "name" })
 public class CategoryDTO {
 
     //========== ATRIBUTOS ==============
 
-    @Schema(description = "Identificador da categoria gerado automaticamente pelo banco de dados", example = "1")
+    @Schema(description = "ID da categoria gerado automaticamente", example = "1")
     private Long id;
 
-    @Schema(description = "Nome da categoria", example = "Componentes")
-    @NotBlank(message = "Campo nome requerido")
+    @Schema(description = "Nome da categoria (obrigatório)", example = "Componentes")
+    @NotBlank(message = "Nome da categoria é obrigatório")
     private String name;
 
 

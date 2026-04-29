@@ -2,28 +2,38 @@ package com.rpdevelopment.product_inventory_service.dto.product;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.rpdevelopment.product_inventory_service.entity.Product;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
+@Schema(description = "Dados de um produto")
 @JsonPropertyOrder({ "id", "name", "description", "sku", "price", "active"})
 public class ProductDTO {
 
     //========== ATRIBUTOS ==============
 
+
+    @Schema(description = "ID do produto gerado automaticamente", example = "1")
     private Long id;
 
-    @NotBlank(message = "Campo nome produto requerido")
+    @Schema(description = "Nome do produto", example = "Notebook Gamer")
+    @NotBlank(message = "Nome do produto é obrigatório")
     private String name;
 
+    @Schema(description = "Descrição detalhada do produto", example = "Notebook com 16GB RAM e SSD 512GB")
     private String description;
 
-    @NotBlank(message = "Campo SKU requerido")
+    @Schema(description = "Código SKU único do produto", example = "NB-001")
+    @NotBlank(message = "SKU é obrigatório")
     private String sku;
 
-    @NotNull(message = "Campo preço requerido")
-    @Positive(message = "Preço deve ser maior que zero")
+    @Schema(description = "Preço do produto", example = "3500.00")
+    @NotNull(message = "Preço é obrigatório")
+    @Positive(message = "O preço deve ser maior que zero")
     private Double price;
+
+    @Schema(description = "Indica se o produto está ativo", example = "true")
     private boolean active;
 
 
