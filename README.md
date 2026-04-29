@@ -1,7 +1,17 @@
+![Java](https://img.shields.io/badge/Java-21-blue)
+![Spring Boot](https://img.shields.io/badge/SpringBoot-3-green)
+---
+
 # 👤 Product & Inventory Service API
 ### Inventory Management Microservice (Active Development)
 
 Este microsserviço é o segundo microsserviço do ecossistema de e-commerce, focado na gestão de produtos e controle rigoroso de estoque. O projeto foca na aplicação de conceitos práticos de backend, como integridade de dados, regras de negócio e arquitetura escalável.
+
+---
+
+## 🧭 Visão Geral da Arquitetura
+
+![Architecture](src/main/java/com/rpdevelopment/product_inventory_service/docs/diagrams/diagram-product-inventory-service.jpg)
 
 ---
 
@@ -16,7 +26,7 @@ O projeto foi desenvolvido com foco em escalabilidade e manutenção, utilizando
 ---
 
 ## 🛠️ Tecnologias e Ferramentas
-* **Linguagem:** Java (8+) 
+* **Linguagem:** Java 21 
 * **Framework:** Spring Boot 3, Spring Data JPA, Spring Security 
 * **Segurança:** Autenticação e autorização com JWT (OAuth2) 
 * **Banco de Dados:** PostgreSQL (Produção/Dev) e H2 (Testes) 
@@ -86,9 +96,12 @@ Todos os endpoints exigem autenticação, exceto os responsáveis por login/aute
 
 ---
 
-## 🚀 Alguns Endpoints
+## 🚀 Endpoints
+Alguns endpoints principais da API estão listados abaixo. Para a documentação completa, consulte o Swagger.
 
-Todos endpoints presentes na documentação Swagger UI.
+Para a documentação completa, acesse o Swagger:
+👉 http://localhost:8080/swagger-ui.html
+
 
 | Endpoint                                 | Método | Descrição                                     |
 |------------------------------------------|--------|-----------------------------------------------|
@@ -141,7 +154,7 @@ mvn spring-boot:run
 ## 🚀 Próximos Passos
 Este projeto é o segundo de um ecossistema de quatro microsserviços voltados para o portfólio profissional:
 1. **User Service:** Gestão de Usuários e Autenticação.
-2. **Product & Inventory Service:** Gestão de estoque e catálogo (Em desenvolvimento).
+2. **Product & Inventory Service:** Gestão de estoque e catálogo.
 3. **Order Service:** Orquestração de pedidos com integração entre serviços e mensageria (RabbitMQ) - (Em desenvolvimento).
 4. **Infraestrutura:** Conteinerização com **Docker**, monitoramento com **Prometheus/Grafana** e deploy via **AWS**. (Em breve)
 
