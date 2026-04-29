@@ -51,9 +51,10 @@ public class StockController {
             summary = "Retorna um produto com sua quantidade, e quantidade minima pelo seu ID",
             description = "Retorna um produto e sua quantidade no estoque, com base no ID informado. Caso o produto não seja encontrado, será retornado status 404.",
             responses = {
-                    @ApiResponse(responseCode = "200", description = "Produtos encontrado com sucesso"),
+                    @ApiResponse(responseCode = "200", description = "Produto encontrado com sucesso"),
+                    @ApiResponse(responseCode = "401", description = "Não autenticado"),
                     @ApiResponse(responseCode = "403", description = "Acesso negado"),
-                    @ApiResponse(responseCode = "404", description = "Usuário não encontrado")
+                    @ApiResponse(responseCode = "404", description = "Produto não encontrado")
             })
     @GetMapping(value = "/{id}")
     public ResponseEntity<ProductStockDTO> findById(@PathVariable Long id) {
