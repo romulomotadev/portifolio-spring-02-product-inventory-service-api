@@ -52,7 +52,7 @@ public class CategoryService {
     // =========== UPDATE ==============
 
     @Transactional
-    public CategoryDTO update(CategoryDTO categoryDTO, Long id){
+    public CategoryDTO update(Long id, CategoryDTO categoryDTO){
         Category category = repository.findById(id).orElseThrow(
                 () -> new ResourceNotFoundException("Category not found"));
 
