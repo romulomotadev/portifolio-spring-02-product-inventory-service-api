@@ -15,8 +15,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.List;
 import java.util.Optional;
 
-import static com.rpdevelopment.product_inventory_service.factory.test.category.CategoryDTOFactory.createValidCategoryDTO;
 import static com.rpdevelopment.product_inventory_service.factory.test.category.CategoryFactory.createValidCategory;
+import static com.rpdevelopment.product_inventory_service.factory.test.category.CategoryFactory.createValidCategoryDTO;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 

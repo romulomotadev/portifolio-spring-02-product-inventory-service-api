@@ -1,6 +1,7 @@
 package com.rpdevelopment.product_inventory_service.service;
 
 import com.rpdevelopment.product_inventory_service.dto.product.ProductStockDTO;
+import com.rpdevelopment.product_inventory_service.dto.stock.StockDTO;
 import com.rpdevelopment.product_inventory_service.entity.Product;
 import com.rpdevelopment.product_inventory_service.entity.Stock;
 import com.rpdevelopment.product_inventory_service.exception.exceptions.ResourceNotFoundException;
@@ -59,7 +60,7 @@ public class StockService {
 
     // UPDATE STOCK BY PRODUCT
     @Transactional
-    public com.rpdevelopment.product_inventory_service.dto.stock.StockDTO update(Long id, com.rpdevelopment.product_inventory_service.dto.stock.StockDTO stockDTO) {
+    public StockDTO update(Long id, StockDTO stockDTO) {
         Product product = productRepository.findById(id).orElseThrow(
                 ()-> new ResourceNotFoundException("Resource not found"));
         Stock stock = product.getStock();
