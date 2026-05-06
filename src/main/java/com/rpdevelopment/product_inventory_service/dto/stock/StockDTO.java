@@ -2,6 +2,7 @@ package com.rpdevelopment.product_inventory_service.dto.stock;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.rpdevelopment.product_inventory_service.entity.Product;
+import com.rpdevelopment.product_inventory_service.entity.Stock;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Positive;
 
@@ -39,7 +40,7 @@ public class StockDTO {
         this.product = product;
     }
 
-    public StockDTO(com.rpdevelopment.product_inventory_service.entity.StockDTO entity) {
+    public StockDTO(Stock entity) {
         this.id = entity.getId();
         this.quantity = entity.getQuantity();
         this.minimum_stock = entity.getMinimum_stock();

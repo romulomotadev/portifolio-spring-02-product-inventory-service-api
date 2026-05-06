@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name= "tb_stock")
-public class StockDTO {
+public class Stock {
 
     //========== ATRIBUTOS ==============
 
@@ -26,10 +26,10 @@ public class StockDTO {
 
     //========== CONSTRUTORES ==============
 
-    public StockDTO() {
+    public Stock() {
     }
 
-    public StockDTO(Long id, Integer quantity, Integer minimum_stock, Product product) {
+    public Stock(Long id, Integer quantity, Integer minimum_stock, Product product) {
         this.id = id;
         this.quantity = quantity;
         this.minimum_stock = minimum_stock;

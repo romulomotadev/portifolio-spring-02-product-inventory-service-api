@@ -1,7 +1,7 @@
 package com.rpdevelopment.product_inventory_service.dto.product;
 
 import com.rpdevelopment.product_inventory_service.entity.Product;
-import com.rpdevelopment.product_inventory_service.entity.StockDTO;
+import com.rpdevelopment.product_inventory_service.entity.Stock;
 import jakarta.validation.Valid;
 
 
@@ -11,7 +11,7 @@ public class ProductStockDTO extends ProductDTO {
     //===== ATRIBUTOS RELACIONADOS =======
 
     @Valid
-    private StockDTO stockDTO;
+    private Stock stockDTO;
 
 
     //========= CONSTRITORES =============
@@ -19,7 +19,7 @@ public class ProductStockDTO extends ProductDTO {
     public ProductStockDTO() {
     }
 
-    public ProductStockDTO(Long id, String name, String description, String sku, Double price, boolean active, StockDTO stock) {
+    public ProductStockDTO(Long id, String name, String description, String sku, Double price, boolean active, Stock stock) {
         super(id, name, description, sku, price, active);
         this.stockDTO = stock;
     }
@@ -32,11 +32,11 @@ public class ProductStockDTO extends ProductDTO {
 
     //====== GETTER | SETTER ========
 
-    public StockDTO getStockDTO() {
+    public Stock getStockDTO() {
         return stockDTO;
     }
 
-    public void setStockDTO(StockDTO stockDTO) {
+    public void setStockDTO(Stock stockDTO) {
         this.stockDTO = stockDTO;
     }
 }

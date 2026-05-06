@@ -36,7 +36,7 @@ public class Product {
     //STOCK
     @JsonManagedReference
     @OneToOne(mappedBy = "product", cascade = CascadeType.ALL)
-    private StockDTO stock;
+    private Stock stock;
 
 
     //== ATRIBUTOS AUTOMATICOS | LOGS ======
@@ -130,11 +130,11 @@ public class Product {
         this.active = active;
     }
 
-    public StockDTO getStock() {
+    public Stock getStock() {
         return stock;
     }
 
-    public void setStock(StockDTO stock) {
+    public void setStock(Stock stock) {
         this.stock = stock;
     }
 

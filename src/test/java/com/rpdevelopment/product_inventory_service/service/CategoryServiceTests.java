@@ -15,6 +15,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.List;
 import java.util.Optional;
 
+import static com.rpdevelopment.product_inventory_service.factory.test.category.CategoryDTOFactory.createValidCategoryDTO;
+import static com.rpdevelopment.product_inventory_service.factory.test.category.CategoryFactory.createValidCategory;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -42,8 +44,8 @@ class CategoryServiceTests {
         existingId = 1L;
         nonExistingId = 999L;
 
-        entity = new Category(1L, "Acessórios");
-        dto = new CategoryDTO(entity);
+        entity = createValidCategory();
+        dto = createValidCategoryDTO();
     }
 
     // ========= FIND BY ID =========
