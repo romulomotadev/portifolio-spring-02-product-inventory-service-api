@@ -51,7 +51,7 @@ public class ProductService {
 
     //FIND BY SKU
     @Transactional(readOnly = true)
-    public ProductCategoryDTO findAllBySku(String sku) {
+    public ProductCategoryDTO findBySku(String sku) {
         Product product = productRepository.findBySku(sku);
         return new ProductCategoryDTO(product);
     }
@@ -112,27 +112,30 @@ public class ProductService {
 
         Product product = productRepository.findById(id).orElseThrow(
                 () -> new ResourceNotFoundException("Resource not found"));
+
         productDtoToEntity(productCategoryDTO, product);
 
         Set<Category> aux = new HashSet<>();
+
         for(Category category : categoryRepository.findAll()){
             for(CategoryDTO categoryDTO : productCategoryDTO.getCategories()){
+
                 if(categoryDTO.getId().equals(category.getId())){
                     aux.add(category);
                 }
             }
         }
-        productRepository.findById(id).get().getCategories().clear();
-        productRepository.findById(id).get().getCategories().addAll(aux);
+
+        product.getCategories().clear();
+        product.getCategories().addAll(aux);
 
         productRepository.save(product);
         return new ProductCategoryDTO(product);
     }
 
 
-    //============= UPDATE ===============
+    //============= DELETE ===============
 
-    // DELETE CATEGORY
     @Transactional
     public void delete(Long id) {
         Product product = productRepository.findById(id).orElseThrow(

@@ -2,7 +2,6 @@ package com.rpdevelopment.product_inventory_service.controller;
 
 import com.rpdevelopment.product_inventory_service.dto.product.ProductCategoryDTO;
 import com.rpdevelopment.product_inventory_service.dto.product.ProductCategoryStockDTO;
-import com.rpdevelopment.product_inventory_service.dto.product.ProductStockDTO;
 import com.rpdevelopment.product_inventory_service.dto.projection.ProductCategoryProjection;
 import com.rpdevelopment.product_inventory_service.service.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -79,7 +78,7 @@ public class ProductController {
     @GetMapping(value = "/sku")
     public ResponseEntity<ProductCategoryDTO> findBySku(
             @RequestParam(name = "sku") String sku ) {
-        ProductCategoryDTO productSku = productService.findAllBySku(sku);
+        ProductCategoryDTO productSku = productService.findBySku(sku);
         return ResponseEntity.ok(productSku);
     }
 

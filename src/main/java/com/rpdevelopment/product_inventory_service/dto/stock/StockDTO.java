@@ -6,6 +6,8 @@ import com.rpdevelopment.product_inventory_service.entity.Stock;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Positive;
 
+import java.util.Objects;
+
 public class StockDTO {
 
     //======== ATRIBUTOS =============
@@ -41,10 +43,12 @@ public class StockDTO {
     }
 
     public StockDTO(Stock entity) {
-        this.id = entity.getId();
-        this.quantity = entity.getQuantity();
-        this.minimum_stock = entity.getMinimum_stock();
-        this.product = entity.getProduct();
+        if (entity != null) {
+            this.id = entity.getId();
+            this.quantity = entity.getQuantity();
+            this.minimum_stock = entity.getMinimum_stock();
+            this.product = entity.getProduct();
+        }
     }
 
 
@@ -81,4 +85,5 @@ public class StockDTO {
     public void setProduct(Product product) {
         this.product = product;
     }
+
 }

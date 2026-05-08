@@ -5,6 +5,8 @@ import com.rpdevelopment.product_inventory_service.entity.Category;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 
+import java.util.Objects;
+
 @Schema(description = "Representa uma categoria do sistema.")
 @JsonPropertyOrder({ "id", "name" })
 public class CategoryDTO {
@@ -51,5 +53,21 @@ public class CategoryDTO {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+
+    //========== HACHCODE | EQUALS ==============
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CategoryDTO that = (CategoryDTO) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 }
