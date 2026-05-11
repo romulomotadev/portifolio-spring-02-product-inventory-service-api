@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -39,8 +41,10 @@ public class CategoryController {
     )
     @GetMapping
     public ResponseEntity<List<CategoryDTO>> findAll() {
+
         return ResponseEntity.ok(service.findAll());
     }
+
 
     //FIND BY ID
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
@@ -77,7 +81,9 @@ public class CategoryController {
     )
     @PostMapping
     public ResponseEntity<CategoryDTO> save(@Valid @RequestBody CategoryDTO dto) {
-        return ResponseEntity.ok(service.save(dto));
+        CategoryDTO saved = service.save(dto);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
+        return ResponseEntity.created(uri).body(saved);
     }
 
 
