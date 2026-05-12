@@ -57,7 +57,7 @@ public class ProductController {
                     @ApiResponse(responseCode = "404", description = "Produto não encontrado")
             }
     )
-    @GetMapping(value = "/{id}")
+    @GetMapping("/{id:[0-9]+}")
     public ResponseEntity<ProductCategoryDTO> findById(@PathVariable Long id) {
         ProductCategoryDTO productId = productService.findById(id);
         return ResponseEntity.ok(productId);

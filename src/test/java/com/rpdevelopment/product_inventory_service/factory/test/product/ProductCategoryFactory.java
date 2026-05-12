@@ -75,7 +75,7 @@ public class ProductCategoryFactory {
     // ============= DTO ===============
 
     // Para Services (Mockito)
-    public static ProductCategoryDTO createProductCategoryValidFactoryDTO() {
+    public static ProductCategoryDTO createProductCategoryValidDTO() {
         Product productCategoryValid = createProductCategoryValidFactory();
         return new ProductCategoryDTO(productCategoryValid);
     }

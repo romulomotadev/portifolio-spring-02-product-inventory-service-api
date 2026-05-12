@@ -45,6 +45,7 @@ public class StockController {
         return ResponseEntity.ok(productStockDTOs);
     }
 
+
     //FIND ID
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @Operation(
@@ -61,6 +62,7 @@ public class StockController {
         ProductStockDTO productStockDTO = productStockService.findById(id);
         return ResponseEntity.ok(productStockDTO);
     }
+
 
     //FIND ALL PRODUCT BY STOCK LOW
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")

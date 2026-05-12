@@ -79,7 +79,7 @@ public class ProductServiceTests {
         entityProductCategory = createProductCategoryValidFactory();
         entityProjection = createProductCategoryProjectionValidFactory();
 
-        categoryDto = createProductCategoryValidFactoryDTO();
+        categoryDto = createProductCategoryValidDTO();
         categoryStockDto = createProductCategoryStockValidFactoryDTO();
 
         pageable = PageRequest.of(0, 10);
