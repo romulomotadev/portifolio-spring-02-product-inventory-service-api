@@ -63,9 +63,9 @@ public class ProductCategoryFactory {
         Map<String, Object> projectionData = new HashMap<>();
 
         projectionData.put("name", createNewProduct().getName());
-        projectionData.put("Description", createNewProduct().getDescription());
+        projectionData.put("description", createNewProduct().getDescription());
         projectionData.put("price", createNewProduct().getPrice());
-        projectionData.put("Active", createNewProduct().isActive());
+        projectionData.put("active", createNewProduct().isActive());
 
         return factory.createProjection(ProductCategoryProjection.class, projectionData);
 

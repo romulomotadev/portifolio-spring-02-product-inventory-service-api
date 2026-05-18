@@ -14,6 +14,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
 
 @RestController
 @Tag(name = "Products", description = "Controller for Product")
@@ -159,7 +162,8 @@ public class ProductController {
     @PostMapping
     public ResponseEntity<ProductCategoryStockDTO> create(@Valid @RequestBody ProductCategoryStockDTO productCategoryStockDTO) {
         ProductCategoryStockDTO newProduct = productService.insert(productCategoryStockDTO);
-        return ResponseEntity.ok(newProduct);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newProduct.getId()).toUri();
+        return ResponseEntity.created(uri).body(newProduct);
     }
 
 
