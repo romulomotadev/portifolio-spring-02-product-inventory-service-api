@@ -25,7 +25,6 @@ import java.util.List;
 
 import static com.rpdevelopment.product_inventory_service.factory.test.product.ProductCategoryFactory.createProductCategoryProjectionValidFactory;
 import static com.rpdevelopment.product_inventory_service.factory.test.product.ProductCategoryFactory.createProductCategoryValidDTO;
-import static com.rpdevelopment.product_inventory_service.factory.test.product.ProductCategoryStockFactory.createProductCategoryStockValidFactory;
 import static com.rpdevelopment.product_inventory_service.factory.test.product.ProductCategoryStockFactory.createProductCategoryStockValidFactoryDTO;
 import static com.rpdevelopment.product_inventory_service.factory.test.product.ProductFactory.createValidProductDTO;
 import static org.mockito.ArgumentMatchers.any;
