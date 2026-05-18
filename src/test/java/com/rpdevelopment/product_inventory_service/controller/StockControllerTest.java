@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -32,9 +33,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(value = StockController.class, excludeAutoConfiguration = {SecurityAutoConfiguration.class})
@@ -245,4 +244,45 @@ public class StockControllerTest {
 
                 .andExpect(status().isNotFound());
     }
+
+
+    // ========= VALIDATION =========
+
+    @Test
+    @DisplayName("Create deve retornar 400 quando quantidade estoque menor que zero")
+    public void createShouldReturn400whenStockQuantityIsLessThanZero() throws Exception {
+
+        StockDTO invalidDTO = stockDTO;
+        invalidDTO.setQuantity(-1);
+
+        // ========= ACT + ASSERT =========
+
+        mockMvc.perform(put("/stocks/{id}", existingId)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(invalidDTO)))
+
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.status").value(400))
+                .andExpect(jsonPath("$.error").exists());
+    }
+
+
+    @Test
+    @DisplayName("Create deve retornar 400 quando quantidade minima menor que zero")
+    public void createShouldReturn400WhenTheMinimumQuantityIsLessThanZero() throws Exception {
+
+        StockDTO invalidDTO = stockDTO;
+        invalidDTO.setMinimum_stock(-1);
+
+        // ========= ACT + ASSERT =========
+
+        mockMvc.perform(put("/stocks/{id}", existingId)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(invalidDTO)))
+
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.status").value(400))
+                .andExpect(jsonPath("$.error").exists());
+    }
+
 }

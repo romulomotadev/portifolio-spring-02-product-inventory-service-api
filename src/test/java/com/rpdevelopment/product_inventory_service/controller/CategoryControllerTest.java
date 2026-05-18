@@ -3,16 +3,19 @@ package com.rpdevelopment.product_inventory_service.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rpdevelopment.product_inventory_service.dto.category.CategoryDTO;
 import com.rpdevelopment.product_inventory_service.exception.exceptions.ResourceNotFoundException;
+import com.rpdevelopment.product_inventory_service.factory.test.category.CategoryFactory;
 import com.rpdevelopment.product_inventory_service.service.CategoryService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultActions;
 
 import java.util.List;
 
@@ -227,4 +230,29 @@ public class CategoryControllerTest {
 
                 .andExpect(status().isNotFound());
     }
+
+
+    // ========= VALIDATION =========
+
+    @Test
+    @DisplayName("Create deve retornar 400 quando name for inválido")
+    public void createShouldReturn400WhenNameIsinValid() throws Exception {
+
+        CategoryDTO invalidDTO = dto;
+        invalidDTO.setName(null);
+
+        // ========= ACT + ASSERT =========
+
+        mockMvc.perform(post("/categories")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(invalidDTO)))
+
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.status").value(400))
+                .andExpect(jsonPath("$.error").exists());
+
+        //VERIFICAÇÃO - service não chamado
+        Mockito.verify(service, Mockito.never()).save(Mockito.any());
+    }
+
 }
