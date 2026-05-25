@@ -17,10 +17,9 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     Product findBySku(String sku);
 
     // FIND ALL PRODUCT ACTIVE
-
     Page<Product> findAllByActive(Pageable pageable, boolean active);
 
-    // FIND BY PRODUCT BY NAME
+    // FIND ALL PRODUCT BY NAME
     Page<Product> findByNameContainingIgnoreCaseOrderByNameAsc(String productName, Pageable pageable);
 
 

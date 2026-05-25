@@ -33,6 +33,7 @@ public class ProductStockFactory {
         Product product = createNewProduct();
         Stock stock = createNewStock();
 
+        stock.setProduct(product);
         product.setStock(stock);
 
         return product;

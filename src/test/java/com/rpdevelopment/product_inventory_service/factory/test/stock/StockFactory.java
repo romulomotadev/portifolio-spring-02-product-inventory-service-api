@@ -36,7 +36,7 @@ public class StockFactory {
                 null,
                 100,
                 10,
-                newProduct
+                null
         );
     }
 
