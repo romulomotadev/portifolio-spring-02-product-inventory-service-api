@@ -37,11 +37,11 @@ O projeto foi desenvolvido com foco em escalabilidade e manutenção, utilizando
 ---
 
 ## 🧪 Qualidade de Software (Em desenvolvimento)
-A cobertura de testes está sendo ativamente desenvolvida para garantir confiabilidade e facilidade de manutenção.
+A aplicação possui uma sólida cobertura de testes automatizados, garantindo a confiabilidade das regras de negócio:
 
-* **Testes de Integração (Fluxo Controlador → Banco de Dados)** 
-* **Testes Unitários usando Mockito** 
-* **Fábricas de Dados de Teste para cenários reutilizáveis** 
+* **Testes de Integração (IT):** Validação de fluxos completos de ponta a ponta, desde o Controller até a persistência.
+* **Testes de Unidade:** Foco em lógica isolada com o uso intensivo de Mocks.
+* **Factories de Teste:** Implementação de fábricas de objetos para garantir cenários de teste consistentes e reutilizáveis.
 
 ---
 
@@ -152,11 +152,10 @@ mvn spring-boot:run
 ---
 
 ## 🚀 Próximos Passos
-Este projeto é o segundo de um ecossistema de quatro microsserviços voltados para o portfólio profissional:
+Este projeto é o segundo de um ecossistema de três microsserviços voltados para o portfólio profissional:
 1. **User Service:** Gestão de Usuários e Autenticação.
 2. **Product & Inventory Service:** Gestão de estoque e catálogo.
 3. **Order Service:** Orquestração de pedidos com integração entre serviços e mensageria (RabbitMQ) - (Em desenvolvimento).
-4. **Infraestrutura:** Conteinerização com **Docker**, monitoramento com **Prometheus/Grafana** e deploy via **AWS**. (Em breve)
 
 ---
 
