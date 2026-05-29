@@ -19,7 +19,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static com.rpdevelopment.product_inventory_service.factory.test.category.CategoryFactory.createNewCategoryDTO;
 import static com.rpdevelopment.product_inventory_service.factory.test.category.CategoryFactory.createValidCategoryDTO;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
