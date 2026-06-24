@@ -1,11 +1,104 @@
 ![Java](https://img.shields.io/badge/Java-21-blue)
 ![Spring Boot](https://img.shields.io/badge/SpringBoot-3-green)
+![Docker](https://img.shields.io/badge/Docker-Enabled-blue)
 ---
 
 # 👤 Product & Inventory Service API
-### Inventory Management Microservice (Active Development)
 
-Este microsserviço é o segundo microsserviço do ecossistema de e-commerce, focado na gestão de produtos e controle rigoroso de estoque. O projeto foca na aplicação de conceitos práticos de backend, como integridade de dados, regras de negócio e arquitetura escalável.
+Microsserviço de gestão de produtos e controle de estoque. 
+O projeto foca na aplicação de conceitos práticos de backend, como integridade de dados, regras de negócio e arquitetura escalável.
+
+---
+
+## ⚡ Quick Start
+
+```bash
+git clone https://github.com/romulomotadev/portifolio-spring-02-product-inventory-service-api.git
+cd portifolio-spring-02-product-inventory-service-api.git
+docker compose up --build
+```
+
+---
+
+## 🛠️ Tecnologias
+* **Linguagem:** Java 21
+* **Framework:** Spring Boot 3, Spring Data JPA, Spring Security
+* **Segurança:** Autenticação e autorização com JWT (OAuth2)
+* **Banco de Dados:** PostgreSQL (Produção/Dev) e H2 (Testes)
+* **APIs:** REST, Swagger/OpenAPI
+* **Testes:** JUnit 5, Mockito
+* * **Infraestrutura:** Docker / Docker Compose
+* **Build:** Maven
+
+---
+
+## ✨ Principais Recursos
+
+- Authorization & Authentication (JWT / OAuth2)
+- Spring Security
+- REST API
+- PostgreSQL
+- Docker / Docker Compose
+- OpenAPI / Swagger
+- Testes Unitários & Testes de Integração
+- Arquitetura limpa (DTO, Camadas, Exception Handling)
+
+---
+
+## ▶️ Executando o Projeto
+
+### Requisitos
+
+#### Opção 1 - Executar com Docker (Recomendado)
+
+- Docker
+- Docker Compose
+
+#### Opção 2 - Executar Localmente
+
+- Java 21+
+- Maven
+- PostgreSQL
+
+---
+
+## 🐳 Docker
+
+```bash
+# clonar projeto 
+git clone https://github.com/romulomotadev/portifolio-spring-02-product-inventory-service-api.git
+
+# acessar diretório da aplicação
+cd portifolio-spring-02-product-inventory-service-api.git
+
+# constrói a imagem antes de subir
+docker compose up --build
+
+# Verificar containers
+docker ps
+
+# parar os containers
+docker compose down
+
+# subir novamente sem reconstruir
+docker compose up
+
+# subir em background
+docker compose up -d
+```
+---
+
+## 💻 Local
+
+```bash
+git clone https://github.com/romulomotadev/portifolio-spring-02-product-inventory-service-api.git
+
+cd portifolio-spring-02-product-inventory-service-api.git
+
+mvn clean install
+
+mvn spring-boot:run
+```
 
 ---
 
@@ -18,21 +111,11 @@ Este microsserviço é o segundo microsserviço do ecossistema de e-commerce, fo
 ## 📐 Arquitetura e Modelagem
 O projeto foi desenvolvido com foco em escalabilidade e manutenção, utilizando padrões de mercado:
 
+* **Arquitetura em Camadas:** Separação entre Controller, Service e Repository, promovendo baixo acoplamento e alta coesão.
 * **Modelagem de Dados:** Relacionamentos complexos $N:N$ para Perfis (Roles), $N:N$ para detalhes de produtos e categoria e $1:1$ em produtos e estoque
 * **Projeções (Spring Data JPA):** Otimização de consultas ao banco de dados, buscando apenas os campos necessários através de interfaces de projeção.
 * **Handlers de Exceção:** Tratamento global de erros através de um `@ControllerAdvice`, garantindo respostas HTTP padronizadas e seguras.
 * **DTOs (Data Transfer Objects):** Camada de transporte de dados para isolar a lógica de negócio das entidades de persistência.
-
----
-
-## 🛠️ Tecnologias e Ferramentas
-* **Linguagem:** Java 21 
-* **Framework:** Spring Boot 3, Spring Data JPA, Spring Security 
-* **Segurança:** Autenticação e autorização com JWT (OAuth2) 
-* **Banco de Dados:** PostgreSQL (Produção/Dev) e H2 (Testes) 
-* **APIs:** REST, Swagger/OpenAPI 
-* **Testes:** JUnit 5, Mockito 
-* **Build:** Maven 
 
 ---
 
@@ -41,23 +124,19 @@ A aplicação possui uma sólida cobertura de testes automatizados, garantindo a
 
 * **Testes de Integração (IT):** Validação de fluxos completos de ponta a ponta, desde o Controller até a persistência.
 * **Testes de Unidade:** Foco em lógica isolada com o uso intensivo de Mocks.
-* **Factories de Teste:** Implementação de fábricas de objetos para garantir cenários de teste consistentes e reutilizáveis.
+* **Factories de Teste:** Implementação de fábricas de objetos (`Factory`) para garantir cenários de teste consistentes e reutilizáveis.
 
 ---
 
 ## 📂 Documentação e Testes Manuais
 Para facilitar a exploração da API, o projeto inclui:
-* **Diagramas:** Modelagem de Entidade e Classe detalhada (disponível em `src/main/java/com.r../docs/diagrams`).
-* **Postman:** Collection e Environment prontos para importar e testar os endpoints imediatamente.
+Para facilitar a exploração da API, o projeto inclui:
+* **Diagramas:** Modelagem de Entidade e Classe detalhada (disponível em `src/main/java/com.rpdevelopment.product_inventory_service/docs/diagrams`).
+* **Postman:** Collection e Environment prontos para importar e testar os endpoints imediatamente. (disponível em `src/main/java/com.rpdevelopment.product_inventory_service/docs/postman`).
 * **Swagger:** Documentação interativa disponível via UI ao rodar a aplicação. 
-  
-  * Swagger UI
-    👉 http://localhost:8080/swagger-ui/index.html
 
-  * OpenAPI JSON
-    👉 http://localhost:8080/v3/api-docs
-
----
+- Swagger UI: http://localhost:8080/swagger-ui/index.html
+- OpenAPI: http://localhost:8080/v3/api-docs
 
 ---
 
@@ -133,22 +212,7 @@ Para a documentação completa, acesse o Swagger:
   }
 ]
 ```
----
-## ▶️ Executando o Projeto
 
-### Requisitos
-- Java 21+
-- Maven
-- PostgreSQL
-
-### Passos
-
-```bash
-git clone https://github.com/romulomotadev/portifolio-spring-02-product-inventory-service-api.git
-cd product-inventory-service
-mvn clean install
-mvn spring-boot:run
-```
 ---
 
 ## 🚀 Próximos Passos
