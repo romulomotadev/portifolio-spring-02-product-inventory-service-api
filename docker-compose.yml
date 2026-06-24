@@ -1,0 +1,48 @@
+# Versão da especificação do Docker Compose utilizada
+version: "3.8"
+
+services:
+  # --- SERVIÇO DO BACKEND ---
+  backend:
+    # Constrói a imagem a partir do Dockerfile localizado no mesmo diretório (./)
+    build: ./
+    # Mapeia a porta 8080 do computador (host) para a porta 8080 de dentro do container
+    ports:
+      - 8080:8080
+    # Variáveis de ambiente configuradas para que a aplicação backend se conecte ao banco
+    environment:
+      DB_URL: jdbc:postgresql://postgres-db:5432/portfolio-product-inventory-db
+      DB_USERNAME: postgres
+      DB_PASSWORD: 123456
+    # Define a ordem de inicialização: o backend só inicia quando o banco estiver saudável
+    depends_on:
+      postgres-db:
+        condition: service_healthy
+
+  # --- SERVIÇO DO BANCO DE DADOS (POSTGRESQL) ---
+  postgres-db:
+    # Utiliza uma imagem oficial leve do Postgres (versão 15 baseada em Alpine Linux)
+    image: postgres:15-alpine
+    # Define um nome fixo e amigável para o container
+    container_name: postgres-db
+    # Configurações iniciais obrigatórias do banco de dados PostgreSQL
+    environment:
+      POSTGRES_DB: portfolio-product-inventory-db # Nome do banco de dados a ser criado
+      POSTGRES_USER: postgres                # Usuário administrador
+      POSTGRES_PASSWORD: 123456              # Senha do administrador
+    # Mapeia a porta padrão do Postgres (5432) para acesso externo, se necessário
+    ports:
+      - "5432:5432"
+    # Persistência de dados: garante que os dados do banco não sumam ao parar o container
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    # Mecanismo que verifica periodicamente se o banco já está pronto para receber conexões
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres -d portfolio-product-inventory-db" ]
+      interval: 5s   # Executa o teste a cada 5 segundos
+      timeout: 5s    # Tempo máximo de espera por uma resposta do teste
+      retries: 5     # Número de tentativas falhas antes de marcar o container como "unhealthy"
+
+# Definição dos volumes nomeados globais utilizados para persistência de dados
+volumes:
+  postgres_data:
