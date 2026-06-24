@@ -27,7 +27,7 @@ docker compose up --build
 * **Banco de Dados:** PostgreSQL (Produção/Dev) e H2 (Testes)
 * **APIs:** REST, Swagger/OpenAPI
 * **Testes:** JUnit 5, Mockito
-* * **Infraestrutura:** Docker / Docker Compose
+* **Infraestrutura:** Docker / Docker Compose
 * **Build:** Maven
 
 ---
@@ -119,7 +119,7 @@ O projeto foi desenvolvido com foco em escalabilidade e manutenção, utilizando
 
 ---
 
-## 🧪 Qualidade de Software (Em desenvolvimento)
+## 🧪 Qualidade de Software
 A aplicação possui uma sólida cobertura de testes automatizados, garantindo a confiabilidade das regras de negócio:
 
 * **Testes de Integração (IT):** Validação de fluxos completos de ponta a ponta, desde o Controller até a persistência.
